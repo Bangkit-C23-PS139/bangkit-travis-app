@@ -1,4 +1,4 @@
-package com.rickyslash.travis.ui.home
+package com.rickyslash.travis.ui.main.pages.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

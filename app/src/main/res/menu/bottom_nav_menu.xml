@@ -7,9 +7,9 @@
         android:title="@string/app_name" />
 
     <item
-        android:id="@+id/navigation_meet"
+        android:id="@+id/navigation_bonding"
         android:icon="@drawable/ic_selector_filling_spoke"
-        android:title="@string/label_meet" />
+        android:title="@string/label_bonding" />
 
     <item
         android:id="@+id/navigation_bookmark"

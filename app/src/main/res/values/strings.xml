@@ -2,7 +2,7 @@
     <string name="app_name">Travis AI</string>
     <string name="hint_prompt_input">Hey %s, got a travel idea? I\'ll plan it for you.</string>
     <string name="label_profile">Profile</string>
-    <string name="label_meet">Meet</string>
+    <string name="label_bonding">Bonding</string>
     <string name="label_bookmark">Bookmark</string>
     <string name="label_highlighted">Highlighted</string>
     <string name="label_settings">Settings</string>

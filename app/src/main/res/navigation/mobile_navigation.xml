@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.rickyslash.travis.ui.home.HomeFragment"
-        android:label="@string/label_home"
+        android:name="com.rickyslash.travis.ui.main.pages.home.HomeFragment"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_meet"
-        android:name="com.rickyslash.travis.ui.dashboard.DashboardFragment"
-        android:label="@string/label_meet"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_bonding"
+        android:name="com.rickyslash.travis.ui.main.pages.bonding.BondingFragment"
+        android:label="@string/label_bonding"
+        tools:layout="@layout/fragment_bonding" />
 
     <fragment
         android:id="@+id/navigation_bookmark"
-        android:name="com.rickyslash.travis.ui.notifications.NotificationsFragment"
+        android:name="com.rickyslash.travis.ui.main.pages.bookmark.BookmarkFragment"
         android:label="@string/label_bookmark"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_bookmark" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.rickyslash.travis.ProfileFragment"
+        android:name="com.rickyslash.travis.ui.main.pages.profile.ProfileFragment"
         android:label="@string/label_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
