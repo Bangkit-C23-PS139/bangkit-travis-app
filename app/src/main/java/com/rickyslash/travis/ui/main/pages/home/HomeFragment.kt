@@ -7,29 +7,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.rickyslash.travis.databinding.FragmentHomeBinding
+import com.rickyslash.travis.ui.main.helper.getDateToday
 
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private val binding by lazy(LazyThreadSafetyMode.NONE) {
+        FragmentHomeBinding.inflate(layoutInflater)
+    }
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        setupView()
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setupView() {
+        binding.tvHeaderDate.text = getDateToday().uppercase()
     }
+
 }

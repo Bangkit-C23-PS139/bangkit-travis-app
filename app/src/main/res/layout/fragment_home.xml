@@ -37,10 +37,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
-                    android:text="@string/dummy_home_date"
+                    android:text="@string/default_home_date"
                     android:textColor="?attr/colorOnPrimary"
                     android:textSize="11sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="@string/dummy_home_date" />
 
                 <TextView
                     android:id="@+id/tv_header_name"

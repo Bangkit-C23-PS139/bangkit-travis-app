@@ -13,9 +13,10 @@
     <string name="label_trip_prompt">Trip Prompt</string>
     <string name="dummy_highlighted_destination">Tugu Jogja</string>
     <string name="dummy_home_name">Hi, Alyssa!</string>
-    <string name="dummy_home_date">16 June</string>
+    <string name="dummy_home_date">16 June 2023</string>
     <string name="arg_home_name">Hi, %s!</string>
     <string name="desc_user_avatar">User avatar</string>
     <string name="desc_prompt_help">Prompt help</string>
     <string name="desc_send">Send</string>
+    <string name="default_home_date">Date</string>
 </resources>
