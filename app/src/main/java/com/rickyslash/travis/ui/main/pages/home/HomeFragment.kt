@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.rickyslash.travis.R
 import com.rickyslash.travis.databinding.FragmentHomeBinding
 import com.rickyslash.travis.ui.main.helper.getDateToday
 
@@ -24,6 +26,18 @@ class HomeFragment : Fragment() {
 
     private fun setupView() {
         binding.tvHeaderDate.text = getDateToday().uppercase()
+        binding.btnPromptHelp.setOnClickListener { dialogPromptHelp() }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun dialogPromptHelp() {
+        AlertDialog.Builder(requireActivity()).apply {
+            setTitle(getString(R.string.label_help_prompt_title))
+            setView(R.layout.textview_dialog_message)
+            setPositiveButton(getString(R.string.label_ok), null)
+            create()
+            show()
+        }
     }
 
 }

@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.TravisAI" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/black_121212</item>
+        <item name="colorPrimary">@color/yellow_F7D44C</item>
         <item name="colorPrimaryVariant">@color/black_121212</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondary">@color/black_121212</item>
+        <item name="colorSecondaryVariant">@color/black_121212</item>
         <item name="colorOnSecondary">@color/black_1B1C1E</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
