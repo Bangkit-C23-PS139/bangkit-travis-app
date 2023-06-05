@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow_F7D44C"
+    android:background="?attr/colorPrimary"
     android:fillViewport="true"
     tools:context=".ui.main.pages.home.HomeFragment">
 
@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
                     android:text="@string/dummy_home_date"
-                    android:textColor="?attr/colorOnSecondary"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -156,7 +156,7 @@
                             android:layout_height="wrap_content"
                             android:alpha="0.7"
                             android:text="@string/label_highlighted"
-                            android:textColor="?attr/colorOnSecondary"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="11sp" />
 
                         <TextView
@@ -179,7 +179,7 @@
                         android:backgroundTint="#99FFFFFF"
                         android:elevation="0dp"
                         android:text="@string/label_more"
-                        android:textColor="?attr/colorOnSecondary"
+                        android:textColor="?attr/colorOnPrimary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -254,7 +254,7 @@
                     android:importantForAutofill="no"
                     android:inputType="textLongMessage|textMultiLine"
                     android:minLines="3"
-                    android:textColor="?attr/colorOnSecondary"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -263,13 +263,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/mcv_label_edtx_prompt" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/btn_prompt_send"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/shape_btn_rounded"
                     android:backgroundTint="#99FFFFFF"
+                    android:contentDescription="@string/desc_send"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
                     android:padding="11dp"
                     android:src="@drawable/ic_round_send_24" />
 

@@ -3,17 +3,17 @@
     <!-- Base application theme. -->
     <style name="Theme.TravisAI" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/yellow_F7D44C</item>
+        <item name="colorPrimaryVariant">@color/yellow_CFA233</item>
+        <item name="colorOnPrimary">@color/black_1B1C1E</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black_1B1C1E</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="CardViewLabelBox" parent="Widget.MaterialComponents.CardView">
