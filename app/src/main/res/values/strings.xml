@@ -25,4 +25,7 @@
     <string name="dummy_highlight_thumb">Thumbnail Tugu Jogja</string>
     <string name="desc_highlight_thumb">Thumbnail %d %s</string>
     <string name="dummy_highlight_desc">Formerly this building represents the spirit of the society and the sovereign, Tugu Yogyakarta has become a historical icon of the city.</string>
+    <string name="dummy_highlight_tag">activity</string>
+    <string name="dummy_highlight_tag_overflow">9+</string>
+    <string name="arg_number_overflow">%d+</string>
 </resources>

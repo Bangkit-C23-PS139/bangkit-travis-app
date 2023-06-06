@@ -106,7 +106,7 @@
                         android:src="@drawable/dummy_home_highlight" />
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/mcv_label_image_highlight"
+                        android:id="@+id/mcv_tags_1"
                         style="@style/CardViewLabelBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/tv_label_image_highlight"
+                            android:id="@+id/tv_tags_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/shape_btn_rounded"
@@ -177,7 +177,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_btn_rounded"
-                        android:backgroundTint="#99FFFFFF"
+                        android:backgroundTint="@color/white_trans_LV3"
                         android:elevation="0dp"
                         android:text="@string/label_more"
                         android:textColor="?attr/colorOnPrimary"
@@ -270,7 +270,7 @@
                     android:layout_gravity="end"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/shape_btn_rounded"
-                    android:backgroundTint="#99FFFFFF"
+                    android:backgroundTint="@color/white_trans_LV3"
                     android:contentDescription="@string/desc_send"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
