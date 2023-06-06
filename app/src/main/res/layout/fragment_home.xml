@@ -101,7 +101,7 @@
                         android:id="@+id/iv_image_highlight"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:contentDescription="@string/desc_highlighted_city"
+                        android:contentDescription="@string/desc_highlight_city"
                         android:scaleType="centerCrop"
                         android:src="@drawable/dummy_home_highlight" />
 
@@ -121,7 +121,7 @@
                             android:background="@drawable/shape_btn_rounded"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="@string/dummy_highlighted_destination"
+                            android:text="@string/dummy_highlight_destination"
                             android:textAllCaps="true"
                             android:textSize="11sp"
                             android:textStyle="bold" />
@@ -156,18 +156,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:alpha="0.7"
-                            android:text="@string/label_highlighted"
+                            android:text="@string/label_highlight"
                             android:textColor="?attr/colorOnPrimary"
                             android:textSize="11sp" />
 
                         <TextView
-                            android:id="@+id/tv_highlighted_city"
+                            android:id="@+id/tv_highlight_city"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="@string/dummy_highlighted_city"
+                            android:text="@string/dummy_highlight_city"
                             android:textSize="18sp"
                             android:textStyle="bold" />
                     </LinearLayout>

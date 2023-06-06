@@ -6,12 +6,12 @@
     <string name="label_bookmark">Bookmark</string>
     <string name="label_settings">Settings</string>
     <string name="label_home">Home</string>
-    <string name="label_highlighted">Highlighted in</string>
-    <string name="dummy_highlighted_city">Yogyakarta</string>
+    <string name="label_highlight">Highlighted in</string>
+    <string name="dummy_highlight_city">Yogyakarta</string>
     <string name="label_more">More</string>
-    <string name="desc_highlighted_city">Highlighted destination in city</string>
+    <string name="desc_highlight_city">Highlighted destination in city</string>
     <string name="label_trip_prompt">Trip Prompt</string>
-    <string name="dummy_highlighted_destination">Tugu Jogja</string>
+    <string name="dummy_highlight_destination">Tugu Jogja</string>
     <string name="dummy_home_name">Hi, Alyssa!</string>
     <string name="dummy_home_date">16 June 2023</string>
     <string name="arg_home_name">Hi, %s!</string>
@@ -24,4 +24,5 @@
     <string name="label_ok">Okay</string>
     <string name="dummy_highlight_thumb">Thumbnail Tugu Jogja</string>
     <string name="desc_highlight_thumb">Thumbnail %d %s</string>
+    <string name="dummy_highlight_desc">Formerly this building represents the spirit of the society and the sovereign, Tugu Yogyakarta has become a historical icon of the city.</string>
 </resources>
