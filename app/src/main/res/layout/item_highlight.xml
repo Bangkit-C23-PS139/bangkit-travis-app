@@ -1,237 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:background="@color/yellow_F7D44C"
-    tools:padding="32dp">
+    android:layout_height="450dp"
+    android:layout_marginBottom="16dp"
+    app:cardBackgroundColor="@color/white_trans_LV2"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mcv_item_highlight"
+    <LinearLayout
+        android:id="@+id/ll_item_highlight"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        app:cardBackgroundColor="@color/white_trans_LV2"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/ll_item_highlight"
+        <FrameLayout
+            android:id="@+id/fl_item_highlight"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="0.8">
 
-            <FrameLayout
-                android:id="@+id/fl_item_highlight"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.8">
+            <ImageView
+                android:id="@+id/iv_item_highlight_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/dummy_highlight_city"
+                android:scaleType="centerCrop"
+                app:srcCompat="@tools:sample/backgrounds/scenic" />
 
-                <ImageView
-                    android:id="@+id/iv_item_highlight_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/dummy_highlight_city"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/dummy_home_highlight" />
+            <ImageButton
+                android:id="@+id/btn_highlight_navigate"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="24dp"
+                android:background="@drawable/shape_btn_rounded"
+                android:backgroundTint="@color/white_trans_LV2"
+                android:contentDescription="@string/desc_send"
+                android:padding="11dp"
+                android:src="@drawable/ic_baseline_navigation_24" />
 
-                <ImageButton
-                    android:id="@+id/btn_highlight_navigate"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="top|end"
-                    android:layout_margin="24dp"
-                    android:background="@drawable/shape_btn_rounded"
-                    android:backgroundTint="@color/white_trans_LV2"
-                    android:contentDescription="@string/desc_send"
-                    android:padding="11dp"
-                    android:src="@drawable/ic_baseline_navigation_24" />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/mcv_container_thumb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:layout_margin="24dp"
-                    app:cardBackgroundColor="@color/white_trans_LV1"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp">
-
-                    <LinearLayout
-                        android:id="@+id/ll_container_thumb"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="8dp">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/mcv_thumb_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            app:cardCornerRadius="64dp"
-                            app:cardElevation="0dp"
-                            app:strokeWidth="2dp"
-                            tools:strokeColor="@color/white_trans_LV2">
-
-                            <ImageView
-                                android:id="@+id/iv_thumb_1"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:contentDescription="@string/dummy_highlight_thumb"
-                                android:scaleType="centerCrop"
-                                tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/mcv_thumb_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            app:cardCornerRadius="64dp"
-                            app:cardElevation="0dp"
-                            app:strokeColor="@color/white_trans_LV2"
-                            app:strokeWidth="2dp">
-
-                            <ImageView
-                                android:id="@+id/iv_thumb_2"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:contentDescription="@string/dummy_highlight_thumb"
-                                android:scaleType="centerCrop"
-                                tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/mcv_thumb_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:cardCornerRadius="64dp"
-                            app:cardElevation="0dp"
-                            app:strokeColor="@color/white_trans_LV2"
-                            app:strokeWidth="2dp">
-
-                            <ImageView
-                                android:id="@+id/iv_thumb_3"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:contentDescription="@string/dummy_highlight_thumb"
-                                android:scaleType="centerCrop"
-                                tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_container_thumb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="24dp"
+                app:cardBackgroundColor="@color/white_trans_LV1"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
 
                 <LinearLayout
-                    android:id="@+id/ll_container_tags"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|left"
-                    android:layout_margin="24dp"
-                    android:orientation="horizontal">
+                    android:id="@+id/ll_container_thumb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/mcv_tags_1"
-                        style="@style/CardViewLabelBox"
+                        android:id="@+id/mcv_thumb_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|start"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_marginBottom="8dp"
+                        app:cardCornerRadius="64dp"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="2dp"
+                        tools:strokeColor="@color/white_trans_LV2">
 
-                        <TextView
-                            android:id="@+id/tv_tags_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/shape_btn_rounded"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@string/dummy_highlight_tag"
-                            android:textAllCaps="true"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/iv_thumb_1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:contentDescription="@string/dummy_highlight_thumb"
+                            android:scaleType="centerCrop"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/mcv_tags_2"
-                        style="@style/CardViewLabelBox"
+                        android:id="@+id/mcv_thumb_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|start"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_marginBottom="8dp"
+                        app:cardCornerRadius="64dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/white_trans_LV2"
+                        app:strokeWidth="2dp">
 
-                        <TextView
-                            android:id="@+id/tv_tags_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/shape_btn_rounded"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@string/dummy_highlight_tag_overflow"
-                            android:textAllCaps="true"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
+                        <ImageView
+                            android:id="@+id/iv_thumb_2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:contentDescription="@string/dummy_highlight_thumb"
+                            android:scaleType="centerCrop"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcv_thumb_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="64dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/white_trans_LV2"
+                        app:strokeWidth="2dp">
+
+                        <ImageView
+                            android:id="@+id/iv_thumb_3"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:contentDescription="@string/dummy_highlight_thumb"
+                            android:scaleType="centerCrop"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                     </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
 
-            </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_item_highlight_info"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.25"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp">
+            <LinearLayout
+                android:id="@+id/ll_container_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|left"
+                android:layout_margin="24dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/ll_item_highlight_info"
-                    android:layout_width="match_parent"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_tags_1"
+                    style="@style/CardViewLabelBox"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_gravity="bottom|start"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/tv_item_highlight_title"
+                        android:id="@+id/tv_tags_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/shape_btn_rounded"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@string/dummy_highlight_destination"
-                        android:textSize="24sp"
+                        android:text="@string/dummy_highlight_tag"
+                        android:textAllCaps="true"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
 
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_tags_2"
+                    style="@style/CardViewLabelBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
                     <TextView
-                        android:id="@+id/tv_item_highlight_desc"
-                        android:layout_width="match_parent"
+                        android:id="@+id/tv_tags_2"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:background="@drawable/shape_btn_rounded"
                         android:ellipsize="end"
-                        android:maxLength="100"
-                        android:maxLines="2"
-                        android:text="@string/dummy_highlight_desc" />
+                        android:maxLines="1"
+                        android:text="@string/dummy_highlight_tag_overflow"
+                        android:textAllCaps="true"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
 
-                </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-        </LinearLayout>
+        </FrameLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_item_highlight_info"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
 
-</LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_item_highlight_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_item_highlight_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/dummy_highlight_destination"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_item_highlight_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:maxLength="100"
+                    android:maxLines="2"
+                    android:text="@string/dummy_highlight_desc" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
