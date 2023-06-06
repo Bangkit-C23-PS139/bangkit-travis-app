@@ -1,4 +1,4 @@
-package com.rickyslash.travis.ui.main.helper
+package com.rickyslash.travis.helper
 
 import java.text.SimpleDateFormat
 import java.util.*

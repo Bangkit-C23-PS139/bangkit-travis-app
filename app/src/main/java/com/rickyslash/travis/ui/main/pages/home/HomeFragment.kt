@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.rickyslash.travis.R
 import com.rickyslash.travis.databinding.FragmentHomeBinding
-import com.rickyslash.travis.ui.main.helper.getDateToday
+import com.rickyslash.travis.helper.getDateToday
 
 class HomeFragment : Fragment() {
 
