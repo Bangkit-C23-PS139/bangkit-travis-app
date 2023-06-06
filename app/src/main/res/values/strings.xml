@@ -22,4 +22,6 @@
     <string name="label_help_prompt_title">Prompt Example 🏖️</string>
     <string name="label_help_prompt_message">Sekarang aku lagi di <b>Yogyakarta</b> [KOTA], ingin menjelajah <b>tempat ramai</b> [PREFERENSI] dan <b>berburu barang antik</b> [KEGIATAN]. Jangan lupa, tambahkan <b>Malioboro</b> [DESTINASI] ke dalam jadwalku juga, ya.</string>
     <string name="label_ok">Okay</string>
+    <string name="dummy_highlight_thumb">Thumbnail Tugu Jogja</string>
+    <string name="desc_highlight_thumb">Thumbnail %d %s</string>
 </resources>

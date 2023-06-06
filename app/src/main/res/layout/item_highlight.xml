@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:background="@color/yellow_F7D44C"
+    tools:padding="32dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_item_highlight"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:cardCornerRadius="16dp">
+
+        <FrameLayout
+            android:id="@+id/fl_item_highlight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_highlight_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/dummy_highlighted_city"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/dummy_home_highlight" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_container_thumb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="16dp"
+                android:appCornerRadius="16dp"
+                app:cardBackgroundColor="@color/white_trans_20"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_container_thumb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcv_thumb_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        app:cardCornerRadius="64dp"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="2dp"
+                        tools:strokeColor="@color/white_trans_40">
+
+                        <ImageView
+                            android:id="@+id/iv_thumb_1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:contentDescription="@string/dummy_highlight_thumb"
+                            android:scaleType="centerCrop"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcv_thumb_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        app:cardCornerRadius="64dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/white_trans_40"
+                        app:strokeWidth="2dp">
+
+                        <ImageView
+                            android:id="@+id/iv_thumb_2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:contentDescription="@string/dummy_highlight_thumb"
+                            android:scaleType="centerCrop"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcv_thumb_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="64dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/white_trans_40"
+                        app:strokeWidth="2dp">
+
+                        <ImageView
+                            android:id="@+id/iv_thumb_3"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:contentDescription="@string/dummy_highlight_thumb"
+                            android:scaleType="centerCrop"
+                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageButton
+                android:id="@+id/btn_highlight_navigate"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
+                android:background="@drawable/shape_btn_rounded"
+                android:backgroundTint="@color/white_trans_20"
+                android:contentDescription="@string/desc_send"
+                android:padding="11dp"
+                android:src="@drawable/ic_baseline_navigation_24" />
+
+        </FrameLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
