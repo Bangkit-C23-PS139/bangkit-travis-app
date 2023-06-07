@@ -34,24 +34,19 @@
 
                 <TextView
                     android:id="@+id/tv_header_date"
+                    style="@style/TextViewHeaderLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.7"
                     android:text="@string/default_home_date"
-                    android:textColor="?attr/colorOnPrimary"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
                     tools:text="@string/dummy_home_date" />
 
                 <TextView
                     android:id="@+id/tv_header_name"
+                    style="@style/TextViewHeaderTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="@string/dummy_home_name"
-                    android:textSize="34sp"
-                    android:textStyle="bold" />
+                    android:text="@string/default_home_name"
+                    tools:text="@string/dummy_home_name" />
             </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
@@ -107,7 +102,7 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/mcv_tags_1"
-                        style="@style/CardViewLabelBox"
+                        style="@style/CardViewTagBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="24dp"
@@ -116,15 +111,10 @@
 
                         <TextView
                             android:id="@+id/tv_tags_1"
+                            style="@style/TextViewCardTag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/shape_btn_rounded"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@string/dummy_highlight_destination"
-                            android:textAllCaps="true"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
+                            android:text="@string/dummy_highlight_destination" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -153,12 +143,10 @@
 
                         <TextView
                             android:id="@+id/tv_highlight_label"
+                            style="@style/TextViewCardLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:alpha="0.7"
-                            android:text="@string/label_highlight"
-                            android:textColor="?attr/colorOnPrimary"
-                            android:textSize="11sp" />
+                            android:text="@string/label_highlight" />
 
                         <TextView
                             android:id="@+id/tv_highlight_city"
@@ -168,7 +156,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="@string/dummy_highlight_city"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -210,7 +198,7 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/mcv_label_edtx_prompt"
-                        style="@style/CardViewLabelBox"
+                        style="@style/CardViewTagBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
@@ -218,13 +206,10 @@
 
                         <TextView
                             android:id="@+id/tv_label_edtx_prompt"
+                            style="@style/TextViewCardTag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/shape_btn_rounded"
-                            android:text="@string/label_trip_prompt"
-                            android:textAllCaps="true"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
+                            android:text="@string/label_trip_prompt" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -265,16 +250,12 @@
 
                 <ImageButton
                     android:id="@+id/btn_prompt_send"
+                    style="@style/ImageButtonRoundNoText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/shape_btn_rounded"
-                    android:backgroundTint="@color/white_trans_LV3"
                     android:contentDescription="@string/desc_send"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    android:padding="11dp"
                     android:src="@drawable/ic_round_send_24" />
 
             </LinearLayout>

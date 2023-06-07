@@ -15,7 +15,8 @@
         <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
-    <style name="CardViewLabelBox" parent="Widget.MaterialComponents.CardView">
+    <style name="CardViewTagBox" parent="Widget.MaterialComponents.CardView">
+        <item name="maxWidth">48dp</item>
         <item name="cardBackgroundColor">@color/white_trans_LV2</item>
         <item name="cardCornerRadius">4dp</item>
         <item name="cardElevation">0dp</item>
@@ -29,6 +30,53 @@
         <item name="cardBackgroundColor">@color/white_trans_LV1</item>
         <item name="cardCornerRadius">16dp</item>
         <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="TextViewCardTag" parent="android:Widget.TextView">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewCardLabel" parent="android:Widget.TextView">
+        <item name="android:textSize">11sp</item>
+        <item name="android:alpha">0.7</item>
+    </style>
+
+    <style name="TextViewCardTitle" parent="android:Widget.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TextViewCardDesc" parent="android:Widget.TextView">
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLength">150</item>
+    </style>
+
+    <style name="ImageButtonRoundNoText" parent="android:Widget.ImageButton">
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:padding">11dp</item>
+        <item name="android:background">@drawable/shape_btn_rounded</item>
+        <item name="android:backgroundTint">@color/white_trans_LV2</item>
+    </style>
+
+    <style name="TextViewHeaderLabel" parent="android:Widget.TextView">
+        <item name="android:textSize">11sp</item>
+        <item name="android:alpha">0.7</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewHeaderTitle" parent="android:Widget.TextView">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
     </style>
 
 </resources>

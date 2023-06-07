@@ -13,6 +13,7 @@
     <string name="label_trip_prompt">Trip Prompt</string>
     <string name="dummy_highlight_destination">Tugu Jogja</string>
     <string name="dummy_home_name">Hi, Alyssa!</string>
+    <string name="default_home_name">Hi, Traveler!</string>
     <string name="dummy_home_date">16 June 2023</string>
     <string name="arg_home_name">Hi, %s!</string>
     <string name="desc_user_avatar">User avatar</string>
