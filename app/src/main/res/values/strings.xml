@@ -29,4 +29,5 @@
     <string name="dummy_highlight_tag_overflow">9+</string>
     <string name="arg_number_overflow">%d+</string>
     <string name="label_highlight_caps">HIGHLIGHTED IN</string>
+    <string name="label_highlight_no_data">Nothing highlighted today 😴</string>
 </resources>

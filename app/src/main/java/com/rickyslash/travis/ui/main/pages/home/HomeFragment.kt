@@ -1,15 +1,16 @@
 package com.rickyslash.travis.ui.main.pages.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.rickyslash.travis.R
 import com.rickyslash.travis.databinding.FragmentHomeBinding
 import com.rickyslash.travis.helper.getDateToday
+import com.rickyslash.travis.ui.highlight.HighlightActivity
 
 class HomeFragment : Fragment() {
 
@@ -19,14 +20,18 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         setupView()
+        setupAction()
         return binding.root
     }
 
     private fun setupView() {
         binding.tvHeaderDate.text = getDateToday().uppercase()
+    }
+
+    private fun setupAction() {
         binding.btnPromptHelp.setOnClickListener { dialogPromptHelp() }
+        binding.mcvHighlight.setOnClickListener { startActivity(Intent(requireContext(), HighlightActivity::class.java)) }
     }
 
     @Suppress("DEPRECATION")

@@ -28,7 +28,7 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/dummy_highlight_city"
                 android:scaleType="centerCrop"
-                app:srcCompat="@tools:sample/backgrounds/scenic" />
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <ImageButton
                 android:id="@+id/btn_highlight_navigate"
@@ -67,7 +67,7 @@
                         app:cardCornerRadius="64dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="2dp"
-                        tools:strokeColor="@color/white_trans_LV2">
+                        app:strokeColor="@color/white_trans_LV2">
 
                         <ImageView
                             android:id="@+id/iv_thumb_1"
@@ -131,7 +131,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/mcv_tags_1"
+                    android:id="@+id/mcv_tags"
                     style="@style/CardViewLabelBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/tv_tags_1"
+                        android:id="@+id/tv_tags"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_btn_rounded"
@@ -155,7 +155,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/mcv_tags_2"
+                    android:id="@+id/mcv_tags_amount"
                     style="@style/CardViewLabelBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/tv_tags_2"
+                        android:id="@+id/tv_tags_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_btn_rounded"
