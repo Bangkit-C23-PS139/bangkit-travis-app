@@ -25,10 +25,12 @@
 
             <LinearLayout
                 android:id="@+id/ll_header_info"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/mcv_avatar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -37,8 +39,8 @@
                     style="@style/TextViewHeaderLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/default_home_date"
-                    tools:text="@string/dummy_home_date" />
+                    android:text="@string/default_date"
+                    tools:text="@string/dummy_date_word" />
 
                 <TextView
                     android:id="@+id/tv_header_name"
@@ -46,13 +48,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/default_home_name"
-                    tools:text="@string/dummy_home_name" />
+                    tools:text="@string/dummy_name_label" />
             </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mcv_avatar"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 app:cardCornerRadius="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,6 +67,8 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/desc_user_avatar"
+                    android:maxWidth="64dp"
+                    android:maxHeight="64dp"
                     android:src="@drawable/dummy_home_avatar_real" />
 
             </com.google.android.material.card.MaterialCardView>
@@ -96,7 +100,7 @@
                         android:id="@+id/iv_image_highlight"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:contentDescription="@string/desc_highlight_city"
+                        android:contentDescription="@string/desc_highlighted_destination"
                         android:scaleType="centerCrop"
                         android:src="@drawable/dummy_home_highlight" />
 
@@ -114,7 +118,8 @@
                             style="@style/TextViewCardTag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/dummy_highlight_destination" />
+                            android:text="@string/default_destination"
+                            tools:text="@string/dummy_destination" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -155,9 +160,10 @@
                             android:layout_marginTop="2dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="@string/dummy_highlight_city"
+                            android:text="@string/default_city_current"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="@string/dummy_city" />
                     </LinearLayout>
 
                     <androidx.appcompat.widget.AppCompatButton

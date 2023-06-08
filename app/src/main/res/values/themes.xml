@@ -56,7 +56,7 @@
     <style name="TextViewCardDesc" parent="android:Widget.TextView">
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:maxLength">150</item>
+        <item name="android:maxLength">120</item>
     </style>
 
     <style name="ImageButtonRoundNoText" parent="android:Widget.ImageButton">

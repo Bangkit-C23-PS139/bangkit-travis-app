@@ -16,4 +16,6 @@
     <color name="white_trans_LV2">#66FFFFFF</color>
     <color name="white_trans_LV3">#99FFFFFF</color>
     <color name="black_trans_LV2">#66000000</color>
+    
+    <color name="tools_yellow_F7D44C_trans_80">#CCF7D44C</color>
 </resources>

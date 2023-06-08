@@ -1,34 +1,51 @@
 <resources>
     <string name="app_name">Travis AI</string>
+
     <string name="hint_prompt_input">Got a travel idea? I\'ll plan it for you.</string>
+
     <string name="label_profile">Profile</string>
     <string name="label_bonding">Bonding</string>
     <string name="label_bookmark">Bookmark</string>
     <string name="label_settings">Settings</string>
     <string name="label_home">Home</string>
     <string name="label_highlight">Highlighted in</string>
-    <string name="dummy_highlight_city">Yogyakarta</string>
     <string name="label_more">More</string>
-    <string name="desc_highlight_city">Highlighted destination in city</string>
     <string name="label_trip_prompt">Trip Prompt</string>
-    <string name="dummy_highlight_destination">Tugu Jogja</string>
-    <string name="dummy_home_name">Hi, Alyssa!</string>
-    <string name="default_home_name">Hi, Traveler!</string>
-    <string name="dummy_home_date">16 June 2023</string>
-    <string name="arg_home_name">Hi, %s!</string>
-    <string name="desc_user_avatar">User avatar</string>
-    <string name="desc_prompt_help">Prompt help</string>
-    <string name="desc_send">Send</string>
-    <string name="default_home_date">Date</string>
     <string name="label_help_prompt_title">Prompt Example 🏖️</string>
     <string name="label_help_prompt_message">Sekarang aku lagi di <b>Yogyakarta</b> [KOTA], ingin menjelajah <b>tempat ramai</b> [PREFERENSI] dan <b>berburu barang antik</b> [KEGIATAN]. Jangan lupa, tambahkan <b>Malioboro</b> [DESTINASI] ke dalam jadwalku juga, ya.</string>
     <string name="label_ok">Okay</string>
-    <string name="dummy_highlight_thumb">Thumbnail Tugu Jogja</string>
-    <string name="desc_highlight_thumb">Thumbnail %d %s</string>
-    <string name="dummy_highlight_desc">Formerly this building represents the spirit of the society and the sovereign, Tugu Yogyakarta has become a historical icon of the city.</string>
-    <string name="dummy_highlight_tag">activity</string>
-    <string name="dummy_highlight_tag_overflow">9+</string>
-    <string name="arg_number_overflow">%d+</string>
     <string name="label_highlight_caps">HIGHLIGHTED IN</string>
     <string name="label_highlight_no_data">Nothing highlighted today 😴</string>
+
+    <string name="arg_home_name">Hi, %s!</string>
+    <string name="arg_number_overflow">%d+</string>
+    <string name="arg_highlight_thumb">Thumbnail %d %s</string>
+    <string name="arg_highlighted_destination">%s, highlighted destination in %s</string>
+
+    <string name="desc_user_avatar">User avatar</string>
+    <string name="desc_prompt_help">Prompt help</string>
+    <string name="desc_send">Send trip prompt</string>
+    <string name="desc_navigate">Navigate to destination</string>
+    <string name="desc_highlighted_destination">Highlighted destination in this city</string>
+    <string name="desc_destination_thumbnail">Destination thumbnail</string>
+    <string name="desc_destination_photo">Destination photo</string>
+
+    <string name="default_date">Date</string>
+    <string name="default_destination">Destination</string>
+    <string name="default_destination_desc">Destination description</string>
+    <string name="default_city_current">Current City</string>
+    <string name="default_activity">Activity</string>
+    <string name="default_plus">+</string>
+    <string name="default_home_name">Hi, Traveler!</string>
+    <string name="default_tplan_time_allocation">Time Allocation</string>
+
+    <string name="dummy_time_allocation">09:00 – 11:00</string>
+    <string name="dummy_destination_desc">Formerly this building represents the spirit of the society and the sovereign, Tugu Yogyakarta has become a historical icon of the city.</string>
+    <string name="dummy_activity">Swimming</string>
+    <string name="dummy_tag_overflow">9+</string>
+    <string name="dummy_destination_thumb">Thumbnail Tugu Jogja</string>
+    <string name="dummy_city">Yogyakarta</string>
+    <string name="dummy_destination">Tugu Jogja</string>
+    <string name="dummy_name_label">Hi, Alyssa!</string>
+    <string name="dummy_date_word">16 June 2023</string>
 </resources>

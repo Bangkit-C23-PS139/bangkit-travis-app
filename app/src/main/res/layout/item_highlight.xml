@@ -2,13 +2,11 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CardViewTransContainer"
     android:layout_width="match_parent"
     android:layout_height="450dp"
     android:layout_marginBottom="16dp"
-    app:cardBackgroundColor="@color/white_trans_LV2"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="0dp"
-    tools:cardBackgroundColor="@color/yellow_F7D44C">
+    tools:cardBackgroundColor="@color/tools_yellow_F7D44C_trans_80">
 
     <LinearLayout
         android:id="@+id/ll_item_highlight"
@@ -27,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:contentDescription="@string/dummy_highlight_city"
+                android:contentDescription="@string/desc_highlighted_destination"
                 android:scaleType="centerCrop"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -38,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|end"
                 android:layout_margin="24dp"
-                android:contentDescription="@string/desc_send"
+                android:contentDescription="@string/desc_navigate"
                 android:src="@drawable/ic_baseline_navigation_24" />
 
             <com.google.android.material.card.MaterialCardView
@@ -72,7 +70,7 @@
                             android:id="@+id/iv_thumb_1"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:contentDescription="@string/dummy_highlight_thumb"
+                            android:contentDescription="@string/desc_destination_thumbnail"
                             android:scaleType="centerCrop"
                             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -92,7 +90,7 @@
                             android:id="@+id/iv_thumb_2"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:contentDescription="@string/dummy_highlight_thumb"
+                            android:contentDescription="@string/desc_destination_thumbnail"
                             android:scaleType="centerCrop"
                             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -111,7 +109,7 @@
                             android:id="@+id/iv_thumb_3"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:contentDescription="@string/dummy_highlight_thumb"
+                            android:contentDescription="@string/desc_destination_thumbnail"
                             android:scaleType="centerCrop"
                             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -125,7 +123,7 @@
                 android:id="@+id/ll_container_tags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|left"
+                android:layout_gravity="start|top"
                 android:layout_margin="24dp"
                 android:orientation="horizontal">
 
@@ -144,7 +142,8 @@
                         style="@style/TextViewCardTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/dummy_highlight_tag" />
+                        android:text="@string/default_activity"
+                        tools:text="@string/dummy_activity" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -162,7 +161,8 @@
                         style="@style/TextViewCardTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/dummy_highlight_tag_overflow" />
+                        android:text="@string/default_plus"
+                        tools:text="@string/dummy_tag_overflow" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -176,8 +176,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.25"
             android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            tools:background="@color/white_trans_LV1">
+            android:paddingRight="24dp">
 
             <LinearLayout
                 android:id="@+id/ll_item_highlight_info"
@@ -194,7 +193,8 @@
                     style="@style/TextViewCardTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/dummy_highlight_destination" />
+                    android:text="@string/default_destination"
+                    tools:text="@string/dummy_destination" />
 
                 <TextView
                     android:id="@+id/tv_item_highlight_desc"
@@ -202,7 +202,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="@string/dummy_highlight_desc" />
+                    android:text="@string/default_destination_desc"
+                    tools:text="@string/dummy_destination_desc" />
 
             </LinearLayout>
 
