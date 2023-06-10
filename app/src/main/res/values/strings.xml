@@ -20,6 +20,8 @@
     <string name="label_tplan_no_data">Uh-oh, there\'s a glitch in generating your Travel Plan 😥</string>
     <string name="label_tplan_empty_destination">Please enter destination</string>
     <string name="label_cancel">Cancel</string>
+    <string name="label_edit">Edit</string>
+    <string name="label_navigate">Navigate</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
@@ -45,6 +47,7 @@
     <string name="default_home_name">Hi, Traveler!</string>
     <string name="default_tplan_time_allocation">Time Allocation</string>
     <string name="default_description">Description</string>
+    <string name="default_destination_type">Destination Type</string>
 
     <string name="dummy_time_allocation">09:00 – 11:00</string>
     <string name="dummy_destination_desc">Formerly this building represents the spirit of the society and the sovereign, Tugu Yogyakarta has become a historical icon of the city.</string>
@@ -55,4 +58,5 @@
     <string name="dummy_destination">Tugu Jogja</string>
     <string name="dummy_name_label">Hi, Alyssa!</string>
     <string name="dummy_date_word">16 June 2023</string>
+    <string name="dummy_destination_type">Monument</string>
 </resources>

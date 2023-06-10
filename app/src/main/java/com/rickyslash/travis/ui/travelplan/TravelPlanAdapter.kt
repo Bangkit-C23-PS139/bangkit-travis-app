@@ -1,7 +1,9 @@
 package com.rickyslash.travis.ui.travelplan
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -43,6 +45,11 @@ class TravelPlanAdapter(private val travelPlanList: List<TravelPlanItem>): Recyc
             .into(holder.binding.ivItemTplan)
 
         holder.binding.btnItemTplanEdit.setOnClickListener { dialogPromptEdit(holder.itemView.context, data, (holder.binding)) }
+        holder.binding.btnItemTplanNavigate.setOnClickListener {
+            val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.photoUrl))
+            holder.itemView.context.startActivity(navIntent)
+        }
+
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(travelPlanList[position]) }
     }
 
