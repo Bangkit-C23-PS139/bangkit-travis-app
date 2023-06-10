@@ -1,6 +1,5 @@
 package com.rickyslash.travis.ui.highlight
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HighlightViewModel(): ViewModel() {
+class HighlightViewModel: ViewModel() {
 
     private val _listHighlightItem = MutableLiveData<List<HighlightItem>>()
     val listHighlightItem: LiveData<List<HighlightItem>> = _listHighlightItem
@@ -26,9 +25,8 @@ class HighlightViewModel(): ViewModel() {
     val responseMessage: LiveData<String?> = _responseMessage
 
     fun getHighlights() {
-        val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1c2VyLWJDTGNBTk9PMzE1WllEYWIiLCJpYXQiOjE2ODYxMTg0MzB9.zPUdYarP5faDNnSbooHwfXhKIfDlVhYYERf86KzDb2o"
         _isLoading.value = true
-        val client = ApiConfig.getApiService(token).getHighlights()
+        val client = ApiConfig.getApiService().getHighlights()
         client.enqueue(object : Callback<DummyHighlightResponse> {
             override fun onResponse(
                 call: Call<DummyHighlightResponse>,
@@ -59,10 +57,6 @@ class HighlightViewModel(): ViewModel() {
             }
 
         })
-    }
-
-    companion object {
-        private val TAG = HighlightViewModel::class.java.simpleName
     }
 
 }

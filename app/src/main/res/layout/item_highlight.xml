@@ -5,8 +5,7 @@
     style="@style/CardViewTransContainer"
     android:layout_width="match_parent"
     android:layout_height="450dp"
-    android:layout_marginBottom="16dp"
-    tools:cardBackgroundColor="@color/tools_yellow_F7D44C_trans_80">
+    android:layout_marginBottom="16dp">
 
     <LinearLayout
         android:id="@+id/ll_item_highlight"

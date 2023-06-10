@@ -30,6 +30,7 @@ class HighlightActivity : AppCompatActivity() {
 
         setupView()
         setupViewModel()
+        setupAction()
     }
 
     private fun setupView() {
@@ -40,6 +41,12 @@ class HighlightActivity : AppCompatActivity() {
         highlightViewModel = ViewModelProvider(this)[HighlightViewModel::class.java]
         setupRecyclerViewData()
         observeLoading()
+    }
+
+    private fun setupAction() {
+        binding.appbarTop.setNavigationOnClickListener {
+            this.onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private fun setupRecyclerViewData() {
@@ -79,7 +86,6 @@ class HighlightActivity : AppCompatActivity() {
             override fun onItemClicked(data: HighlightItem) {
                 showHighlightDetails(data)
             }
-
         })
     }
 
