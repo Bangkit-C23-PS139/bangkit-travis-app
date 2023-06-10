@@ -5,10 +5,8 @@
     android:id="@+id/mcv_item_plan"
     style="@style/CardViewTransContainer"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
-    android:layout_marginBottom="16dp"
-    tools:cardBackgroundColor="@color/tools_yellow_F7D44C_trans_80"
-    tools:layout_margin="16dp">
+    android:layout_height="130dp"
+    android:layout_marginBottom="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_item_tplan"
@@ -33,12 +31,12 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/desc_destination_photo"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/dummy_home_highlight" />
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_item_tplan_container_info"
+            android:id="@+id/cl_item_tplan_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="16dp"
@@ -48,7 +46,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/ll_item_tplan_container_info"
+                android:id="@+id/ll_item_tplan_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -57,29 +55,58 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/tv_item_tplan_time"
-                    style="@style/TextViewCardLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/default_tplan_time_allocation"
-                    android:textStyle="bold"
-                    tools:text="@string/dummy_time_allocation" />
-
-                <TextView
-                    android:id="@+id/tv_item_tplan_title"
-                    style="@style/TextViewCardTitle"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_item_tplan_info_header"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/default_destination"
-                    tools:text="@string/dummy_destination" />
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/ll_item_tplan_info_header"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_item_tplan_edit"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:id="@+id/tv_item_tplan_time"
+                            style="@style/TextViewCardLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_tplan_time_allocation"
+                            android:textStyle="bold"
+                            tools:text="@string/dummy_time_allocation" />
+
+                        <TextView
+                            android:id="@+id/tv_item_tplan_title"
+                            style="@style/TextViewCardTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_destination"
+                            tools:text="@string/dummy_destination" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/btn_item_tplan_edit"
+                        style="@style/ImageButtonRoundNoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/desc_item_tplan_edit"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/round_edit_location_alt_24" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/tv_item_tplan_desc"
                     style="@style/TextViewCardDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     android:text="@string/default_destination_desc"
                     tools:text="@string/dummy_destination_desc" />
             </LinearLayout>

@@ -19,6 +19,8 @@ class ApiConfig {
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
 
+            val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1c2VyLWJDTGNBTk9PMzE1WllEYWIiLCJpYXQiOjE2ODYzODcwNjB9.CLQzk8HoBD39xNVe0NVfOTtj7da5MI7KSa1B3sYS3wU"
+
             if (token != null) {
                 val authInterceptor = Interceptor { chain ->
                     val req = chain.request()

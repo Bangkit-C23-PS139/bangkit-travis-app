@@ -12,6 +12,18 @@ fun getDateToday(): String {
     return dateFormat.format(currentDate)
 }
 
+fun getTimeFromISODate(dateString: String): String {
+    val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    inputFormat.timeZone = TimeZone.getTimeZone("UTC")
+    return try {
+        val date = inputFormat.parse(dateString)
+        outputFormat.format(date!!)
+    } catch (e: Exception) {
+        dateString
+    }
+}
+
 fun getRandomMaterialColor(): Int {
     val colors = arrayOf("#EF5350", "#EC407A", "#AB47BC", "#7E57C2", "#5C6BC0",
         "#42A5F5", "#29B6F6", "#26C6DA", "#26A69A", "#66BB6A", "#9CCC65",

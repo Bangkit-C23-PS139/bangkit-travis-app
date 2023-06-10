@@ -14,8 +14,12 @@
     <string name="label_help_prompt_title">Prompt Example 🏖️</string>
     <string name="label_help_prompt_message">Sekarang aku lagi di <b>Yogyakarta</b> [KOTA], ingin menjelajah <b>tempat ramai</b> [PREFERENSI] dan <b>berburu barang antik</b> [KEGIATAN]. Jangan lupa, tambahkan <b>Malioboro</b> [DESTINASI] ke dalam jadwalku juga, ya.</string>
     <string name="label_ok">Okay</string>
-    <string name="label_highlight_caps">HIGHLIGHTED IN</string>
     <string name="label_highlight_no_data">Nothing highlighted today 😴</string>
+    <string name="label_tplan">Generated Travel Plan in</string>
+    <string name="label_item_tplan_edit">Edit travel plan item 🏖️</string>
+    <string name="label_tplan_no_data">Uh-oh, there\'s a glitch in generating your Travel Plan 😥</string>
+    <string name="label_tplan_empty_destination">Please enter destination</string>
+    <string name="label_cancel">Cancel</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
@@ -29,6 +33,8 @@
     <string name="desc_highlighted_destination">Highlighted destination in this city</string>
     <string name="desc_destination_thumbnail">Destination thumbnail</string>
     <string name="desc_destination_photo">Destination photo</string>
+    <string name="desc_back">Back</string>
+    <string name="desc_item_tplan_edit">Edit Travel Plan item</string>
 
     <string name="default_date">Date</string>
     <string name="default_destination">Destination</string>
@@ -38,6 +44,7 @@
     <string name="default_plus">+</string>
     <string name="default_home_name">Hi, Traveler!</string>
     <string name="default_tplan_time_allocation">Time Allocation</string>
+    <string name="default_description">Description</string>
 
     <string name="dummy_time_allocation">09:00 – 11:00</string>
     <string name="dummy_destination_desc">Formerly this building represents the spirit of the society and the sovereign, Tugu Yogyakarta has become a historical icon of the city.</string>
