@@ -19,7 +19,7 @@
         android:paddingBottom="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_home_header"
+            android:id="@+id/cl_highlight_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.rickyslash.travis.R
 import com.rickyslash.travis.databinding.FragmentHomeBinding
 import com.rickyslash.travis.helper.getDateToday
 import com.rickyslash.travis.ui.highlight.HighlightActivity
+import com.rickyslash.travis.ui.travelplan.TravelPlanActivity
 
 class HomeFragment : Fragment() {
 
@@ -32,9 +34,9 @@ class HomeFragment : Fragment() {
     private fun setupAction() {
         binding.btnPromptHelp.setOnClickListener { dialogPromptHelp() }
         binding.mcvHighlight.setOnClickListener { startActivity(Intent(requireContext(), HighlightActivity::class.java)) }
+        binding.btnPromptSend.setOnClickListener { startActivity(Intent(requireActivity(), TravelPlanActivity::class.java)) }
     }
 
-    @Suppress("DEPRECATION")
     private fun dialogPromptHelp() {
         AlertDialog.Builder(requireActivity()).apply {
             setTitle(getString(R.string.label_help_prompt_title))
