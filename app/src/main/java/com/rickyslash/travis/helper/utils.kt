@@ -40,3 +40,15 @@ fun formatPriceToK(price: Int): String {
         else -> "${price / 1000000}M"
     }
 }
+
+fun getExactStartDateFromISODate(dateString: String): String {
+    val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("dd MMM yy - hh:mm a", Locale.getDefault())
+    inputFormat.timeZone = TimeZone.getTimeZone("UTC")
+    return try {
+        val date = inputFormat.parse(dateString)
+        outputFormat.format(date!!)
+    } catch (e: Exception) {
+        dateString
+    }
+}

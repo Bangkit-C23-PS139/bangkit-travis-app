@@ -1,5 +1,6 @@
 package com.rickyslash.travis.api
 
+import com.rickyslash.travis.api.response.DummyBondingResponse
 import com.rickyslash.travis.api.response.DummyHighlightResponse
 import com.rickyslash.travis.api.response.DummyServiceResponse
 import com.rickyslash.travis.api.response.DummyTravelPlanResponse
@@ -19,5 +20,8 @@ interface ApiService {
 
     @GET("/v1/stories")
     fun getServices(): Call<DummyServiceResponse>
+
+    @GET("/v1/stories")
+    fun getBondingList(): Call<DummyBondingResponse>
 
 }
