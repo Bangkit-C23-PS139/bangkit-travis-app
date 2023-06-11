@@ -80,7 +80,6 @@ class TravelPlanActivity : AppCompatActivity() {
     }
 
     private fun setTravelPlanData(travelPlanData: List<TravelPlanItem>) {
-        Log.d("TravelPlanActivity", "Travel Plan Data set")
         val travelPlanAdapter = TravelPlanAdapter(travelPlanData)
         binding.rvTplan.adapter = travelPlanAdapter
 

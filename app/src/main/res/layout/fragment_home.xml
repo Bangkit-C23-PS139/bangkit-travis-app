@@ -30,12 +30,12 @@
                 android:layout_marginEnd="16dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/mcv_avatar"
+                app:layout_constraintEnd_toStartOf="@+id/mcv_home_avatar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tv_header_date"
+                    android:id="@+id/tv_home_header_date"
                     style="@style/TextViewHeaderLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                     tools:text="@string/dummy_date_word" />
 
                 <TextView
-                    android:id="@+id/tv_header_name"
+                    android:id="@+id/tv_home_label_header_title"
                     style="@style/TextViewHeaderTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/mcv_avatar"
+                android:id="@+id/mcv_home_avatar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 app:cardCornerRadius="16dp"

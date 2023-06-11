@@ -63,14 +63,14 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tv_header_date"
+                    android:id="@+id/tv_home_header_date"
                     style="@style/TextViewHeaderLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_highlight" />
 
                 <TextView
-                    android:id="@+id/tv_header_name"
+                    android:id="@+id/tv_highlight_label_header_title"
                     style="@style/TextViewHeaderTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
