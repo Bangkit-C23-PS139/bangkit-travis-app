@@ -1,6 +1,7 @@
 package com.rickyslash.travis.api
 
 import com.rickyslash.travis.api.response.DummyHighlightResponse
+import com.rickyslash.travis.api.response.DummyServiceResponse
 import com.rickyslash.travis.api.response.DummyTravelPlanResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -15,5 +16,8 @@ interface ApiService {
     fun getTravelPlan(
         @Query("size") size: Int = 6
     ): Call<DummyTravelPlanResponse>
+
+    @GET("/v1/stories")
+    fun getServices(): Call<DummyServiceResponse>
 
 }

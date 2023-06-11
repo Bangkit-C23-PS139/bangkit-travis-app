@@ -12,9 +12,9 @@
         android:title="@string/label_bonding" />
 
     <item
-        android:id="@+id/navigation_bookmark"
-        android:icon="@drawable/ic_selector_filling_bookmark"
-        android:title="@string/label_bookmark" />
+        android:id="@+id/navigation_service"
+        android:icon="@drawable/ic_selector_filling_beach"
+        android:title="@string/label_service" />
 
     <item
         android:id="@+id/navigation_profile"

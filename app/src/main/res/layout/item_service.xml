@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/iv_item_tplan"
+            android:id="@+id/iv_item_service"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
@@ -33,7 +33,7 @@
             android:layout_margin="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_item_tplan"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_service"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tv_item_tplan_time"
+                    android:id="@+id/tv_item_service_provider"
                     style="@style/TextViewCardLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,11 +56,12 @@
                     tools:text="@string/dummy_service_provider" />
 
                 <TextView
-                    android:id="@+id/tv_item_tplan_title"
-                    style="@style/TextViewCardTitle"
+                    android:id="@+id/tv_item_service_title"
+                    style="@style/TextViewMediumTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
+                    android:paddingTop="2dp"
                     android:text="@string/default_service_name"
                     tools:text="@string/dummy_service_name" />
 
@@ -93,7 +94,7 @@
                         android:includeFontPadding="false"
                         android:lineSpacingExtra="0dp"
                         android:text="@string/default_price"
-                        android:textSize="24sp"
+                        android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

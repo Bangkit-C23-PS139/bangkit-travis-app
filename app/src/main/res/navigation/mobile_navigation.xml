@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_bonding" />
 
     <fragment
-        android:id="@+id/navigation_bookmark"
-        android:name="com.rickyslash.travis.ui.main.pages.bookmark.BookmarkFragment"
-        android:label="@string/label_bookmark"
-        tools:layout="@layout/fragment_bookmark" />
+        android:id="@+id/navigation_service"
+        android:name="com.rickyslash.travis.ui.main.pages.service.ServiceFragment"
+        android:label="@string/label_service"
+        tools:layout="@layout/fragment_service" />
 
     <fragment
         android:id="@+id/navigation_profile"

@@ -32,3 +32,11 @@ fun getRandomMaterialColor(): Int {
 
     return Color.parseColor(colors[Random.nextInt(colors.size)])
 }
+
+fun formatPriceToK(price: Int): String {
+    return when {
+        price < 1000 -> price.toString()
+        price < 1000000 -> "${price / 1000}K"
+        else -> "${price / 1000000}M"
+    }
+}

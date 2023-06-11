@@ -23,6 +23,8 @@
     <string name="label_edit">Edit</string>
     <string name="label_navigate">Navigate</string>
     <string name="label_price_starting">Starting from</string>
+    <string name="label_service_title">Services</string>
+    <string name="label_service">Leisure Services in</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>

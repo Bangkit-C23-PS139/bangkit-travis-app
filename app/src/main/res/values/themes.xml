@@ -81,6 +81,13 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="TextViewMediumTitle" parent="android:Widget.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
     <style name="OvrOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">?attr/colorOnPrimary</item>
     </style>
