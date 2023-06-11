@@ -1,16 +1,16 @@
-package com.rickyslash.travis.ui.travelplandetail
+package com.rickyslash.travis.ui.highlight.highlightdetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.rickyslash.travis.R
 
-class TravelPlanDetailActivity : AppCompatActivity() {
+class HighlightDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_travel_plan_detail)
+        setContentView(R.layout.activity_highlight_detail)
     }
 
     companion object {
-        const val EXTRA_TRAVEL_PLAN_ITEM = "extra_travel_plan"
+        const val EXTRA_HIGHLIGHT_ITEM = "extra_highlight"
     }
 }

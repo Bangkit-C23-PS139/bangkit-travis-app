@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rickyslash.travis.R
 import com.rickyslash.travis.api.response.BondingItem
 import com.rickyslash.travis.databinding.FragmentBondingBinding
-import com.rickyslash.travis.ui.bondingdetail.BondingDetailActivity
+import com.rickyslash.travis.ui.main.pages.bonding.bondingdetail.BondingDetailActivity
 
 class BondingFragment : Fragment() {
 

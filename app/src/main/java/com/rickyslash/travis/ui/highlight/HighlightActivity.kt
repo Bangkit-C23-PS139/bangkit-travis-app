@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rickyslash.travis.R
 import com.rickyslash.travis.api.response.HighlightItem
 import com.rickyslash.travis.databinding.ActivityHighlightBinding
-import com.rickyslash.travis.ui.highlightdetail.HighlightDetailActivity
+import com.rickyslash.travis.ui.highlight.highlightdetail.HighlightDetailActivity
 
 class HighlightActivity : AppCompatActivity() {
 

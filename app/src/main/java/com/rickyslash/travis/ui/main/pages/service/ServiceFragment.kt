@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rickyslash.travis.R
 import com.rickyslash.travis.api.response.ServiceItem
 import com.rickyslash.travis.databinding.FragmentServiceBinding
-import com.rickyslash.travis.ui.servicedetail.ServiceDetailActivity
+import com.rickyslash.travis.ui.main.pages.service.servicedetail.ServiceDetailActivity
 
 class ServiceFragment : Fragment() {
 
