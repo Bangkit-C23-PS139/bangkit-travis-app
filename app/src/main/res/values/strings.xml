@@ -25,6 +25,7 @@
     <string name="label_price_starting">Starting from</string>
     <string name="label_service_title">Services</string>
     <string name="label_service">Leisure Services in</string>
+    <string name="label_join">Join</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
@@ -54,6 +55,7 @@
     <string name="default_price">Price</string>
     <string name="default_service_name">Service Name</string>
     <string name="default_service_provider">Service Provider</string>
+    <string name="default_bonding_title">Bonding Activity</string>
 
     <string name="dummy_time_allocation">09:00 – 11:00</string>
     <string name="dummy_destination_desc">Formerly this building represents the spirit of the society and the sovereign, Tugu Yogyakarta has become a historical icon of the city.</string>
@@ -68,4 +70,6 @@
     <string name="dummy_price_k">Rp.250K</string>
     <string name="dummy_service_provider">Dispar DIY</string>
     <string name="dummy_service_name">Naik Kuda Parangtritis</string>
+    <string name="dummy_date_range">16 Jun 23 – 30 Jun 23</string>
+    <string name="dummy_bonding_title">Bangkit Inauguration</string>
 </resources>
