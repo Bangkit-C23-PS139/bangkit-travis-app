@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    
+
     <color name="yellow_F7D44C">#FFF7D44C</color>
     <color name="black_1B1C1E">#FF1B1C1E</color>
     <color name="black_121212">#FF121212</color>
@@ -18,7 +18,7 @@
     <color name="black_trans_LV1">#33CB9A68</color>
     <color name="black_trans_LV2">#66CB9A68</color>
     <color name="black_trans_LV3">#99CB9A68</color>
-    
+
     <color name="tools_yellow_F7D44C_trans_80">#CCF7D44C</color>
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/black_1B1C1E</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/white</color>
 </resources>

@@ -27,6 +27,12 @@
     <string name="label_service">Leisure Services in</string>
     <string name="label_join">Join</string>
     <string name="label_bonding_header">Bonding Activities In</string>
+    <string name="label_login">Login</string>
+    <string name="label_signup">Signup</string>
+    <string name="label_password">Password</string>
+    <string name="label_email">Email</string>
+    <string name="label_travis_team">Bangkit 2023</string>
+    <string name="label_travis_github_org">github.com/Bangkit-C23-PS139</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
@@ -42,6 +48,7 @@
     <string name="desc_destination_photo">Destination photo</string>
     <string name="desc_back">Back</string>
     <string name="desc_item_tplan_edit">Edit Travel Plan item</string>
+    <string name="desc_app_logo">Travis Mascot</string>
 
     <string name="default_date">Date</string>
     <string name="default_destination">Destination</string>

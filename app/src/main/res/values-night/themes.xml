@@ -74,7 +74,7 @@
         <item name="android:textSize">11sp</item>
         <item name="android:alpha">0.7</item>
         <item name="android:textStyle">bold</item>
-        <item name="textAllCaps">true</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="TextViewHeaderTitle" parent="android:Widget.TextView">
@@ -91,9 +91,10 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <style name="OvrOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="OvrOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">?attr/colorOnPrimary</item>
         <item name="startIconTint">?attr/colorOnPrimary</item>
+        <item name="hintTextColor">?attr/colorOnPrimary</item>
         <item name="boxCornerRadiusTopStart">12dp</item>
         <item name="boxCornerRadiusTopEnd">12dp</item>
         <item name="boxCornerRadiusBottomStart">12dp</item>
