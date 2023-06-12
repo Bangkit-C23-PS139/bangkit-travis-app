@@ -185,7 +185,7 @@
             android:id="@+id/ll_item_bonding_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white_trans_LV2"
+            android:background="?attr/colorOnTertiary"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -59,6 +59,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="?attr/colorOnTertiaryFixed"
                 app:strokeWidth="3dp">
 
                 <ImageView
@@ -81,7 +82,6 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="16dp">
-
 
             <LinearLayout
                 android:id="@+id/ll_highlight"
@@ -171,7 +171,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_btn_rounded"
-                        android:backgroundTint="@color/white_trans_LV3"
+                        android:backgroundTint="?attr/colorOnTertiary"
                         android:elevation="0dp"
                         android:text="@string/label_more"
                         android:textColor="?attr/colorOnPrimary"

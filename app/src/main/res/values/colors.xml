@@ -12,10 +12,12 @@
     <color name="black_1B1C1E">#FF1B1C1E</color>
     <color name="black_121212">#FF121212</color>
     <color name="yellow_CFA233">#FFCFA233</color>
+
     <color name="white_trans_LV1">#33FFFFFF</color>
     <color name="white_trans_LV2">#66FFFFFF</color>
-    <color name="white_trans_LV3">#99FFFFFF</color>
-    <color name="black_trans_LV2">#66000000</color>
+    <color name="black_trans_LV1">#33CB9A68</color>
+    <color name="black_trans_LV2">#66CB9A68</color>
+    <color name="black_trans_LV3">#99CB9A68</color>
     
     <color name="tools_yellow_F7D44C_trans_80">#CCF7D44C</color>
 </resources>
