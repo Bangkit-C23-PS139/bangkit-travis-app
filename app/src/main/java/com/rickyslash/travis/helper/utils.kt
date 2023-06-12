@@ -1,9 +1,21 @@
 package com.rickyslash.travis.helper
 
+import android.content.ContentResolver
+import android.content.Context
 import android.graphics.Color
+import android.net.Uri
+import android.os.Environment
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
+
+private const val MAXIMAL_SIZE = 1000000
+
+val timeStamp: String = SimpleDateFormat("dd-MMM-yyyy", Locale.US).format(System.currentTimeMillis())
 
 fun getDateToday(): String {
     val currentDate = Calendar.getInstance().time
@@ -41,9 +53,14 @@ fun formatPriceToK(price: Int): String {
     }
 }
 
-fun getExactStartDateFromISODate(dateString: String): String {
+fun isValidEmail(email: String): Boolean {
+    val emailRegex = Regex("^[\\w+_.-]+@(?:[a-z\\d-]+\\.)+[a-z]{2,}\$")
+    return emailRegex.matches(email)
+}
+
+fun getStartDateFromISODate(dateString: String): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-    val outputFormat = SimpleDateFormat("dd MMM yy - hh:mm a", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("dd MMM yy", Locale.getDefault())
     inputFormat.timeZone = TimeZone.getTimeZone("UTC")
     return try {
         val date = inputFormat.parse(dateString)
@@ -51,4 +68,30 @@ fun getExactStartDateFromISODate(dateString: String): String {
     } catch (e: Exception) {
         dateString
     }
+}
+
+fun getFirstWord(sentence: String): String {
+    val words = sentence.trim().split(" ")
+    return if (words.isNotEmpty()) words[0] else ""
+}
+
+fun uriToFile(selectedImg: Uri, context: Context): File {
+    val contentResolver: ContentResolver = context.contentResolver
+    val myFile = createTempFile(context)
+
+    val inputStream = contentResolver.openInputStream(selectedImg) as InputStream
+    val outputStream: OutputStream = FileOutputStream(myFile)
+
+    val buf = ByteArray(1024)
+    var len: Int
+    while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+
+    outputStream.close()
+    inputStream.close()
+    return myFile
+}
+
+fun createTempFile(context: Context): File {
+    val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    return File.createTempFile(timeStamp, ".jpg", storageDir)
 }

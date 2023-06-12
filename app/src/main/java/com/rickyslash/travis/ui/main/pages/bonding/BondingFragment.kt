@@ -2,6 +2,7 @@ package com.rickyslash.travis.ui.main.pages.bonding
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rickyslash.travis.R
-import com.rickyslash.travis.api.response.BondingItem
+import com.rickyslash.travis.api.response.BondingListDataItem
 import com.rickyslash.travis.databinding.FragmentBondingBinding
+import com.rickyslash.travis.helper.ViewModelFactory
+import com.rickyslash.travis.ui.login.LoginActivity
 import com.rickyslash.travis.ui.main.pages.bonding.bondingdetail.BondingDetailActivity
 
 class BondingFragment : Fragment() {
@@ -25,6 +28,7 @@ class BondingFragment : Fragment() {
     private var isLoadingObserver: Observer<Boolean>? = null
     private var isErrorObserver: Observer<Boolean>? = null
     private var responseMessageObserver: Observer<String?>? = null
+    private var joinResponseMessageObserver: Observer<String?>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +45,7 @@ class BondingFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        bondingViewModel = ViewModelProvider(requireActivity())[BondingViewModel::class.java]
+        bondingViewModel = ViewModelProvider(requireActivity(), ViewModelFactory(requireActivity().application))[BondingViewModel::class.java]
         setupRecyclerViewData()
         observeLoading()
     }
@@ -50,7 +54,7 @@ class BondingFragment : Fragment() {
         bondingViewModel.getBondingList()
         isErrorObserver = Observer { isError ->
             if (!isError) {
-                bondingViewModel.listBondingItem.observe(requireActivity()) {
+                bondingViewModel.listBondingData.observe(requireActivity()) {
                     if (it.isNotEmpty()) {
                         setBondingData(it)
                     } else {
@@ -75,21 +79,40 @@ class BondingFragment : Fragment() {
         binding.rvBonding.layoutManager = layoutManager
     }
 
-    private fun setBondingData(bondingData: List<BondingItem>) {
+    private fun setBondingData(bondingData: List<BondingListDataItem>) {
         val bondingAdapter = BondingAdapter(bondingData)
         binding.rvBonding.adapter = bondingAdapter
 
         bondingAdapter.setOnItemClickCallback(object : BondingAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: BondingItem) {
+            override fun onItemClicked(data: BondingListDataItem) {
                 showBondingDetails(data)
+            }
+        })
+
+        bondingAdapter.setOnButtonJoinClickCallback(object : BondingAdapter.OnButtonJoinClickCallback {
+            override fun onButtonJoinClicked(bondingId: String) {
+                joinBonding(bondingId)
             }
         })
     }
 
-    private fun showBondingDetails(data: BondingItem) {
+    private fun showBondingDetails(data: BondingListDataItem) {
         val intent = Intent(requireActivity(), BondingDetailActivity::class.java)
         intent.putExtra(BondingDetailActivity.EXTRA_BONDING_ITEM, data)
         startActivity(intent)
+    }
+
+    private fun joinBonding(bondingId: String) {
+        if (bondingViewModel.getPreferences().isLogin) {
+            joinResponseMessageObserver = Observer { joinResponseMessage ->
+                bondingViewModel.joinBonding(bondingId)
+                if (joinResponseMessage != null) {
+                    Toast.makeText(requireContext(), bondingViewModel.joinResponseMessage.value, Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -109,5 +132,6 @@ class BondingFragment : Fragment() {
         isLoadingObserver?.let(bondingViewModel.isLoading::removeObserver)
         isErrorObserver?.let(bondingViewModel.isError::removeObserver)
         responseMessageObserver?.let(bondingViewModel.responseMessage::removeObserver)
+        joinResponseMessageObserver?.let(bondingViewModel.joinResponseMessage::removeObserver)
     }
 }

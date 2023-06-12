@@ -1,27 +1,30 @@
 package com.rickyslash.travis.api
 
-import com.rickyslash.travis.api.response.DummyBondingResponse
-import com.rickyslash.travis.api.response.DummyHighlightResponse
-import com.rickyslash.travis.api.response.DummyServiceResponse
-import com.rickyslash.travis.api.response.DummyTravelPlanResponse
+import com.rickyslash.travis.api.response.BondingListResponse
+import com.rickyslash.travis.api.response.LinkToBondingResponse
+import com.rickyslash.travis.api.response.LoginResponse
+import com.rickyslash.travis.api.response.SelfDataResponse
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
 
-    @GET("/v1/stories")
-    fun getHighlights(): Call<DummyHighlightResponse>
+    @FormUrlEncoded
+    @POST("/auth/login")
+    fun userLogin(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Call<LoginResponse>
 
-    @GET("/v1/stories")
-    fun getTravelPlan(
-        @Query("size") size: Int = 6
-    ): Call<DummyTravelPlanResponse>
+    @GET("/users/self")
+    fun getSelfUser(): Call<SelfDataResponse>
 
-    @GET("/v1/stories")
-    fun getServices(): Call<DummyServiceResponse>
+    @POST("/activity/{activity_id}/link")
+    fun linkToBonding(
+        @Path("activity_id") bondingId: String
+    ): Call<LinkToBondingResponse>
 
-    @GET("/v1/stories")
-    fun getBondingList(): Call<DummyBondingResponse>
+    @GET("/activity")
+    fun getBondingList(): Call<BondingListResponse>
 
 }

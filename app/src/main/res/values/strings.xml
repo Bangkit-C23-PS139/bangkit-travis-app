@@ -88,4 +88,7 @@
     <string name="dummy_service_name">Naik Kuda Parangtritis</string>
     <string name="dummy_date_exact">16 Jun 23 – 09:00 AM</string>
     <string name="dummy_bonding_title">Bangkit Inauguration</string>
+
+    <string name="err_email_invalid">Please enter a valid email address</string>
+    <string name="err_password_less_8">Password must be at least 8 characters long</string>
 </resources>

@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object {
-        fun getApiService(token: String? = null): ApiService {
+        fun getApiService(accessToken: String? = null, refreshToken: String? = null): ApiService {
             val loggingInterceptor = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             } else {
@@ -19,13 +19,12 @@ class ApiConfig {
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
 
-            val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1c2VyLWJDTGNBTk9PMzE1WllEYWIiLCJpYXQiOjE2ODYzODcwNjB9.CLQzk8HoBD39xNVe0NVfOTtj7da5MI7KSa1B3sYS3wU"
-
-            if (token != null) {
+            if (accessToken != null && refreshToken != null) {
                 val authInterceptor = Interceptor { chain ->
                     val req = chain.request()
                     val requestHeader = req.newBuilder()
-                        .addHeader("Authorization", "Bearer $token")
+                        .addHeader("Access_Token", accessToken)
+                        .addHeader("Refresh_Token", refreshToken)
                         .build()
                     chain.proceed(requestHeader)
                 }
@@ -33,7 +32,7 @@ class ApiConfig {
             }
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://story-api.dicoding.dev/")
+                .baseUrl("http://34.142.198.169")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client.build())
                 .build()
