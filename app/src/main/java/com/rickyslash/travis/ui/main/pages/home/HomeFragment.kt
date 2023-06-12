@@ -11,6 +11,7 @@ import com.rickyslash.travis.R
 import com.rickyslash.travis.databinding.FragmentHomeBinding
 import com.rickyslash.travis.helper.getDateToday
 import com.rickyslash.travis.ui.highlight.HighlightActivity
+import com.rickyslash.travis.ui.login.LoginActivity
 import com.rickyslash.travis.ui.travelplan.TravelPlanActivity
 
 class HomeFragment : Fragment() {
@@ -34,6 +35,7 @@ class HomeFragment : Fragment() {
         binding.btnPromptHelp.setOnClickListener { dialogPromptHelp() }
         binding.mcvHighlight.setOnClickListener { startActivity(Intent(requireContext(), HighlightActivity::class.java)) }
         binding.btnPromptSend.setOnClickListener { startActivity(Intent(requireActivity(), TravelPlanActivity::class.java)) }
+        binding.ivAvatar.setOnClickListener { startActivity(Intent(requireContext(), LoginActivity::class.java)) }
     }
 
     private fun dialogPromptHelp() {

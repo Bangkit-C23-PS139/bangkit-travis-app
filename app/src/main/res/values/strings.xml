@@ -33,6 +33,13 @@
     <string name="label_email">Email</string>
     <string name="label_travis_team">Bangkit 2023</string>
     <string name="label_travis_github_org">github.com/Bangkit-C23-PS139</string>
+    <string name="label_upload_photo">Upload photo</string>
+    <string name="label_name">Name</string>
+    <string name="label_instagram_id">Instagram ID</string>
+    <string name="label_twitter_id">Twitter ID</string>
+    <string name="label_youtube_id">Youtube ID</string>
+    <string name="label_tiktok_id">TikTok ID</string>
+    <string name="label_socmed_optional">Social Media (optional)</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
@@ -49,6 +56,7 @@
     <string name="desc_back">Back</string>
     <string name="desc_item_tplan_edit">Edit Travel Plan item</string>
     <string name="desc_app_logo">Travis Mascot</string>
+    <string name="desc_signup_upload_photo">Upload profile photo</string>
 
     <string name="default_date">Date</string>
     <string name="default_destination">Destination</string>
