@@ -1,13 +1,13 @@
-package com.rickyslash.travis.api.response
+package com.rickyslash.travis.api.dummy.dummyresponse
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
-data class DummyServiceResponse (
+data class DummyTravelPlanResponse (
 
     @field:SerializedName("listStory")
-    val listService: List<ServiceItem>,
+    val listTravelPlan: List<TravelPlanItem>,
 
     @field:SerializedName("error")
     val error: Boolean,
@@ -18,18 +18,19 @@ data class DummyServiceResponse (
 )
 
 @Parcelize
-data class ServiceItem(
+data class TravelPlanItem(
+
     @field:SerializedName("photoUrl")
-    val photoUrl: String,
+    var photoUrl: String?,
 
     @field:SerializedName("createdAt")
-    val createdAt: String,
+    var createdAt: String,
 
     @field:SerializedName("name")
-    val name: String,
+    var name: String,
 
     @field:SerializedName("description")
-    val description: String,
+    var description: String,
 
     @field:SerializedName("lon")
     val lon: Float,

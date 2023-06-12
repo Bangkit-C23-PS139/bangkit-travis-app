@@ -1,4 +1,4 @@
-package com.rickyslash.travis.api.response
+package com.rickyslash.travis.api.dummy.dummyresponse
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class DummyBondingResponse (
 
     @field:SerializedName("listStory")
-    val listBonding: List<BondingItem>,
+    val listBonding: List<DummyBondingItem>,
 
     @field:SerializedName("error")
     val error: Boolean,
@@ -18,7 +18,7 @@ data class DummyBondingResponse (
 )
 
 @Parcelize
-data class BondingItem(
+data class DummyBondingItem(
     @field:SerializedName("photoUrl")
     val photoUrl: String,
 

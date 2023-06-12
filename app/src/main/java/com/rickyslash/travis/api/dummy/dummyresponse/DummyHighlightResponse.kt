@@ -1,4 +1,4 @@
-package com.rickyslash.travis.api.response
+package com.rickyslash.travis.api.dummy.dummyresponse
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
