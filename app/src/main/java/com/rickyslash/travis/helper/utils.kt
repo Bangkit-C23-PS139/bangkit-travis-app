@@ -75,6 +75,11 @@ fun getFirstWord(sentence: String): String {
     return if (words.isNotEmpty()) words[0] else ""
 }
 
+fun convertSnakeCaseToSentence(snakeCase: String): String {
+    return snakeCase.split("_")
+        .joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
+}
+
 fun uriToFile(selectedImg: Uri, context: Context): File {
     val contentResolver: ContentResolver = context.contentResolver
     val myFile = createTempFile(context)

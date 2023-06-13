@@ -40,6 +40,8 @@
     <string name="label_youtube_id">Youtube ID</string>
     <string name="label_tiktok_id">TikTok ID</string>
     <string name="label_socmed_optional">Social Media (optional)</string>
+    <string name="label_choose_preference">Please Choose Your</string>
+    <string name="label_travel_preference">Travel Preference</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
@@ -72,6 +74,7 @@
     <string name="default_service_name">Service Name</string>
     <string name="default_service_provider">Service Provider</string>
     <string name="default_bonding_title">Bonding Activity</string>
+    <string name="default_preference_name">Preference Item</string>
 
     <string name="dummy_time_allocation">09:00 – 11:00</string>
     <string name="dummy_destination_desc">Formerly this building represents the spirit of the society and the sovereign, Tugu Yogyakarta has become a historical icon of the city.</string>

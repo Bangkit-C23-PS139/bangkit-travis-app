@@ -23,7 +23,7 @@ class UserSharedPreferences(context: Context) {
         model.name = preferences.getString(NAME, "")
         model.gender = preferences.getString(GENDER, "")
         model.age = preferences.getInt(AGE, 0)
-        model.travelPreferences = preferences.getStringSet(TRAVEL_PREFERENCE, null)
+        model.travelPreferences = preferences.getStringSet(TRAVEL_PREFERENCE, setOf())
         model.accessToken = preferences.getString(ACCESS_TOKEN, "")
         model.refreshToken = preferences.getString(REFRESH_TOKEN, "")
         model.isLogin = preferences.getBoolean(IS_LOGIN, false)
