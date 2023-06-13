@@ -17,8 +17,8 @@
         android:title="@string/label_service" />
 
     <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_selector_filling_person"
+        android:id="@+id/navigation_menu_box"
+        android:icon="@drawable/ic_selector_filling_widgets"
         android:title="@string/label_profile"/>
 
 </menu>

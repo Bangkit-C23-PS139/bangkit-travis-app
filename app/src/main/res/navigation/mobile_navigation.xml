@@ -20,12 +20,12 @@
     <fragment
         android:id="@+id/navigation_service"
         android:name="com.rickyslash.travis.ui.main.pages.service.ServiceFragment"
-        android:label="@string/label_service"
+        android:label="@string/label_service_title"
         tools:layout="@layout/fragment_service" />
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.rickyslash.travis.ui.main.pages.profile.ProfileFragment"
-        android:label="@string/label_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/navigation_menu_box"
+        android:name="com.rickyslash.travis.ui.main.pages.menubox.MenuBoxFragment"
+        android:label="@string/label_menu_box"
+        tools:layout="@layout/fragment_menu_box" />
 </navigation>
