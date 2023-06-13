@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputEditText
 import com.rickyslash.travis.R
-import com.rickyslash.travis.api.response.TravelPlanItem
+import com.rickyslash.travis.api.dummy.dummyresponse.TravelPlanItem
 import com.rickyslash.travis.databinding.ItemTravelPlanBinding
 import com.rickyslash.travis.helper.getRandomMaterialColor
 import com.rickyslash.travis.helper.getTimeFromISODate

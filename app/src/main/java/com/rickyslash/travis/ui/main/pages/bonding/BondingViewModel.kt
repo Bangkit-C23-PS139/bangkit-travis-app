@@ -21,9 +21,6 @@ import retrofit2.Response
 
 class BondingViewModel(private val userPreferences: UserSharedPreferences) : ViewModel() {
 
-//    private val _listDummyBondingItem = MutableLiveData<List<DummyBondingItem>>()
-//    val listDummyBondingItem: LiveData<List<DummyBondingItem>> = _listDummyBondingItem
-
     private val _listBondingData = MutableLiveData<List<BondingListDataItem>>()
     val listBondingData: LiveData<List<BondingListDataItem>> = _listBondingData
 

@@ -3,9 +3,9 @@ package com.rickyslash.travis.ui.main.pages.service
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rickyslash.travis.api.ApiConfig
-import com.rickyslash.travis.api.response.DummyServiceResponse
-import com.rickyslash.travis.api.response.ServiceItem
+import com.rickyslash.travis.api.dummy.DummyApiConfig
+import com.rickyslash.travis.api.dummy.dummyresponse.DummyServiceResponse
+import com.rickyslash.travis.api.dummy.dummyresponse.ServiceItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +26,7 @@ class ServiceViewModel : ViewModel() {
 
     fun getServices() {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getServices()
+        val client = DummyApiConfig.getApiService().getServices()
         client.enqueue(object : Callback<DummyServiceResponse> {
             override fun onResponse(
                 call: Call<DummyServiceResponse>,

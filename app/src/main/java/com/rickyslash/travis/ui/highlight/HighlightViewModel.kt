@@ -3,9 +3,9 @@ package com.rickyslash.travis.ui.highlight
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rickyslash.travis.api.ApiConfig
-import com.rickyslash.travis.api.response.DummyHighlightResponse
-import com.rickyslash.travis.api.response.HighlightItem
+import com.rickyslash.travis.api.dummy.DummyApiConfig
+import com.rickyslash.travis.api.dummy.dummyresponse.DummyHighlightResponse
+import com.rickyslash.travis.api.dummy.dummyresponse.HighlightItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +26,7 @@ class HighlightViewModel: ViewModel() {
 
     fun getHighlights() {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getHighlights()
+        val client = DummyApiConfig.getApiService().getHighlights()
         client.enqueue(object : Callback<DummyHighlightResponse> {
             override fun onResponse(
                 call: Call<DummyHighlightResponse>,

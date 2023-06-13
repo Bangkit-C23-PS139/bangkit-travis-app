@@ -1,12 +1,11 @@
 package com.rickyslash.travis.ui.travelplan
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rickyslash.travis.api.ApiConfig
-import com.rickyslash.travis.api.response.DummyTravelPlanResponse
-import com.rickyslash.travis.api.response.TravelPlanItem
+import com.rickyslash.travis.api.dummy.DummyApiConfig
+import com.rickyslash.travis.api.dummy.dummyresponse.DummyTravelPlanResponse
+import com.rickyslash.travis.api.dummy.dummyresponse.TravelPlanItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,7 +26,7 @@ class TravelPlanViewModel: ViewModel() {
 
     fun getTravelPlan() {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getTravelPlan()
+        val client = DummyApiConfig.getApiService().getTravelPlan()
         client.enqueue(object : Callback<DummyTravelPlanResponse> {
             override fun onResponse(
                 call: Call<DummyTravelPlanResponse>,

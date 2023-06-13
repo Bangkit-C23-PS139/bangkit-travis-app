@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rickyslash.travis.R
-import com.rickyslash.travis.api.response.TravelPlanItem
+import com.rickyslash.travis.api.dummy.dummyresponse.TravelPlanItem
 import com.rickyslash.travis.databinding.ActivityTravelPlanBinding
 import com.rickyslash.travis.ui.travelplan.travelplandetail.TravelPlanDetailActivity
 

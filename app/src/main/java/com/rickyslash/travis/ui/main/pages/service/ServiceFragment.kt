@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rickyslash.travis.R
-import com.rickyslash.travis.api.response.ServiceItem
+import com.rickyslash.travis.api.dummy.dummyresponse.ServiceItem
 import com.rickyslash.travis.databinding.FragmentServiceBinding
 import com.rickyslash.travis.ui.main.pages.service.servicedetail.ServiceDetailActivity
 
