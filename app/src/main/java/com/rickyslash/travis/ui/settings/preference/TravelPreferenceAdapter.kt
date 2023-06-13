@@ -22,11 +22,12 @@ class TravelPreferenceAdapter(private val selfPreferenceList: List<String>, priv
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = travelPreferenceList[position]
+        val isDataSelected = selfPreferenceList.contains(data)
 
-        if (selfPreferenceList.contains(data) && !holder.binding.rbItemTpref.isSelected) {
+        if (isDataSelected && !holder.binding.rbItemTpref.isSelected) {
             holder.binding.rbItemTpref.isChecked = true
             holder.binding.rbItemTpref.isSelected = true
-        } else {
+        } else if (!isDataSelected && holder.binding.rbItemTpref.isSelected) {
             holder.binding.rbItemTpref.isChecked = false
             holder.binding.rbItemTpref.isSelected = false
         }
