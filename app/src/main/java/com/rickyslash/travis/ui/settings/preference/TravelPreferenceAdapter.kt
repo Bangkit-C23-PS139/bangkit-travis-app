@@ -3,18 +3,33 @@ package com.rickyslash.travis.ui.settings.preference
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.RadioButton
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rickyslash.travis.databinding.ItemTravelPreferenceBinding
 import com.rickyslash.travis.helper.convertSnakeCaseToSentence
 import com.rickyslash.travis.helper.getRandomMaterialColor
 
-class TravelPreferenceAdapter(private val selfPreferenceList: List<String>, private val travelPreferenceList: List<String>): RecyclerView.Adapter<TravelPreferenceAdapter.ViewHolder>() {
+class TravelPreferenceAdapter(
+    private val selfPreferenceList: List<String>,
+    private val travelPreferenceList: List<String>
+) : RecyclerView.Adapter<TravelPreferenceAdapter.ViewHolder>() {
 
-    inner class ViewHolder(var binding: ItemTravelPreferenceBinding): RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(var binding: ItemTravelPreferenceBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        val radioButton: RadioButton = binding.rbItemTpref
+    }
+
+    private val selectedPreference: MutableList<String> = mutableListOf<String>().apply {
+        addAll(selfPreferenceList)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemTravelPreferenceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemTravelPreferenceBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return ViewHolder(binding)
     }
 
@@ -23,31 +38,26 @@ class TravelPreferenceAdapter(private val selfPreferenceList: List<String>, priv
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = travelPreferenceList[position]
         val isDataSelected = selfPreferenceList.contains(data)
+        val isSelected = selectedPreference.contains(data)
 
-        if (isDataSelected && !holder.binding.rbItemTpref.isSelected) {
-            holder.binding.rbItemTpref.isChecked = true
-            holder.binding.rbItemTpref.isSelected = true
-        } else if (!isDataSelected && holder.binding.rbItemTpref.isSelected) {
-            holder.binding.rbItemTpref.isChecked = false
-            holder.binding.rbItemTpref.isSelected = false
-        }
-
-        val dataSentence = convertSnakeCaseToSentence(data)
-        holder.binding.rbItemTpref.text = dataSentence
+        holder.radioButton.isChecked = isSelected
+        holder.radioButton.text = convertSnakeCaseToSentence(data)
         Glide.with(holder.itemView.context)
-            .load("https://source.unsplash.com/512x512/?$dataSentence")
+            .load("https://source.unsplash.com/512x512/?${convertSnakeCaseToSentence(data)}")
             .placeholder(ColorDrawable(getRandomMaterialColor()))
             .into(holder.binding.ivItemTpref)
 
-        holder.binding.rbItemTpref.setOnClickListener {
-            if (!holder.binding.rbItemTpref.isSelected) {
-                holder.binding.rbItemTpref.isChecked = true
-                holder.binding.rbItemTpref.isSelected = true
+        holder.radioButton.setOnClickListener {
+            if (isSelected) {
+                selectedPreference.remove(data)
             } else {
-                holder.binding.rbItemTpref.isChecked = false
-                holder.binding.rbItemTpref.isSelected = false
+                selectedPreference.add(data)
             }
+            notifyItemChanged(position)
         }
     }
 
+    fun getCheckedPreference(): MutableList<String> {
+        return selectedPreference
+    }
 }
