@@ -22,10 +22,15 @@ class TravelPreferenceAdapter(private val selfPreferenceList: List<String>, priv
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = travelPreferenceList[position]
-        if (selfPreferenceList.contains(data)) {
+
+        if (selfPreferenceList.contains(data) && !holder.binding.rbItemTpref.isSelected) {
             holder.binding.rbItemTpref.isChecked = true
             holder.binding.rbItemTpref.isSelected = true
+        } else {
+            holder.binding.rbItemTpref.isChecked = false
+            holder.binding.rbItemTpref.isSelected = false
         }
+
         val dataSentence = convertSnakeCaseToSentence(data)
         holder.binding.rbItemTpref.text = dataSentence
         Glide.with(holder.itemView.context)
@@ -42,7 +47,6 @@ class TravelPreferenceAdapter(private val selfPreferenceList: List<String>, priv
                 holder.binding.rbItemTpref.isSelected = false
             }
         }
-
     }
 
 }
