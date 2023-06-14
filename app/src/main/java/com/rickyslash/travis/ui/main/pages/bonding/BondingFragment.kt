@@ -40,44 +40,26 @@ class BondingFragment : Fragment() {
     private var responseMessageObserver: Observer<String?>? = null
     private var joinResponseMessageObserver: Observer<String?>? = null
 
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private val locationPermissionRequestCode = 1
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        setupView()
         setupViewModel()
-
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-
-        if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-            ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            getLastKnownLocation()
-        } else {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ),
-                locationPermissionRequestCode
-            )
-        }
+        setupView()
 
         return binding.root
     }
 
-    private fun setupView() {
-        setupRV()
-    }
-
     private fun setupViewModel() {
         bondingViewModel = ViewModelProvider(requireActivity(), ViewModelFactory(requireActivity().application))[BondingViewModel::class.java]
+        setupRV()
         setupRecyclerViewData()
         observeLoading()
+    }
+
+    private fun setupView() {
+        binding.tvBondingHeaderTitle.text = bondingViewModel.getPreferences().currentLocation
     }
 
     private fun setupRecyclerViewData() {
@@ -154,41 +136,6 @@ class BondingFragment : Fragment() {
         isLoadingObserver = Observer { showLoading(it) }
         isLoadingObserver?.let {
             bondingViewModel.isLoading.observe(requireActivity(), it)
-        }
-    }
-
-    private fun getLastKnownLocation() {
-        if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationClient.lastLocation
-                .addOnSuccessListener { location: Location? ->
-                    if (location != null) {
-                        val geocoder = Geocoder(requireActivity())
-                        val addresses: List<Address>? = geocoder.getFromLocation(
-                            location.latitude,
-                            location.longitude,
-                            1
-                        )
-                        if (addresses?.isNotEmpty() == true) {
-                            val cityName = removeKabupatenKota(addresses[0].subAdminArea)
-                            Log.d("BondingFragment", addresses[0].toString())
-                            binding.tvBondingLabelHeaderTitle.text = cityName
-                        }
-                    }
-                }
-        } else {
-            Toast.makeText(requireActivity(), R.string.err_location_self_fail, Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if (requestCode == locationPermissionRequestCode) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED &&
-                grantResults[1] == PackageManager.PERMISSION_GRANTED
-            ) {
-                getLastKnownLocation()
-            } else {
-                Toast.makeText(requireActivity(), R.string.err_location_permission_missing, Toast.LENGTH_SHORT).show()
-            }
         }
     }
 

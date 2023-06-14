@@ -29,14 +29,14 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tv_bonding_header_date"
+                android:id="@+id/tv_bonding_header_label"
                 style="@style/TextViewHeaderLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_bonding_header" />
 
             <TextView
-                android:id="@+id/tv_bonding_label_header_title"
+                android:id="@+id/tv_bonding_header_title"
                 style="@style/TextViewHeaderTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
