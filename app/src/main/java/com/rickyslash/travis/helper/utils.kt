@@ -85,6 +85,13 @@ fun removeKabupatenKota(s: String): String {
         .replace("Kota ", "")
 }
 
+fun generateRandomSeed(length: Int): String {
+    val chars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+    return (1..length)
+        .map { chars.random() }
+        .joinToString("")
+}
+
 fun uriToFile(selectedImg: Uri, context: Context): File {
     val contentResolver: ContentResolver = context.contentResolver
     val myFile = createTempFile(context)

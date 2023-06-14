@@ -1,12 +1,12 @@
 package com.rickyslash.travis.ui.settings.preference
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rickyslash.travis.api.ApiConfig
 import com.rickyslash.travis.api.response.SignupResponse
 import com.rickyslash.travis.api.response.UpdateSelfUserResponse
+import com.rickyslash.travis.helper.generateRandomSeed
 import com.rickyslash.travis.model.SignupModel
 import com.rickyslash.travis.model.TravelPreferenceDataSource
 import com.rickyslash.travis.model.CurrentStateModel
@@ -53,14 +53,11 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
                 call: Call<UpdateSelfUserResponse>,
                 response: Response<UpdateSelfUserResponse>
             ) {
-                Log.d("updatePreference", "ENQUEUE")
                 if (response.isSuccessful) {
-                    Log.d("updatePreference", "SUCCESS")
                     _isLoading.value = false
                     val responseBody = response.body()
                     if (responseBody != null) {
                         _isError.value = responseBody.message != "berhasil update detail user"
-                        Log.d("updatePreference", responseBody.message)
                         setTravelPreference(newPreference)
                         _responseMessage.value = responseBody.message
                         _responseMessage.value = null
@@ -69,7 +66,6 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
                     _isLoading.value = false
                     _isError.value = true
                     _responseMessage.value = response.message()
-                    Log.d("updatePreference", response.message())
                     _responseMessage.value = null
                 }
             }
@@ -78,7 +74,6 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
                 _isLoading.value = false
                 _isError.value = true
                 _responseMessage.value = t.message
-                Log.d("updatePreference", t.message.toString())
                 _responseMessage.value = null
             }
         })
@@ -87,28 +82,25 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
     fun userSignup(signupData: SignupModel?) {
         _isLoading.value = true
         if (signupData != null) {
-            Log.d("PreferenceSignup", "DATA NOT NULL")
             val client = ApiConfig.getApiService().userSignup(
                 name = signupData.name!!,
                 email = signupData.email!!,
                 password = signupData.password!!,
                 age = signupData.age.toString(),
                 gender = signupData.gender!!,
-                travelPreferences = signupData.travelPreferences!!
+                travelPreferences = signupData.travelPreferences!!,
+                profilePhoto = DICEBEAR + signupData.name!!.replace(" ", "") + generateRandomSeed(6)
             )
             client.enqueue(object : Callback<SignupResponse> {
                 override fun onResponse(
                     call: Call<SignupResponse>,
                     response: Response<SignupResponse>
                 ) {
-                    Log.d("signup", "ENQUEUE")
                     if (response.isSuccessful) {
-                        Log.d("signup", "SUCCESS")
                         _isLoading.value = false
                         val responseBody = response.body()
                         if (responseBody != null) {
                             _isError.value = responseBody.message != "Successfully register a new user"
-                            Log.d("signup", responseBody.message)
                             _responseMessage.value = responseBody.message
                             _responseMessage.value = null
                         }
@@ -116,7 +108,6 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
                         _isLoading.value = false
                         _isError.value = true
                         _responseMessage.value = response.message()
-                        Log.d("signup", response.message())
                         _responseMessage.value = null
                     }
                 }
@@ -125,7 +116,6 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
                     _isLoading.value = false
                     _isError.value = true
                     _responseMessage.value = t.message
-                    Log.d("signup", t.message.toString())
                     _responseMessage.value = null
                 }
             })
@@ -133,7 +123,10 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
             _isLoading.value = false
             _isError.value = true
             _responseMessage.value = "Trouble retrieving signup data :("
-            Log.d("signup", "Trouble retrieving signup data :(")
         }
+    }
+
+    companion object {
+        private const val DICEBEAR = "https://api.dicebear.com/6.x/thumbs/svg?seed="
     }
 }

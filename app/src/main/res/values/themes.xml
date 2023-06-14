@@ -13,7 +13,7 @@
         <!-- Tertiary brand color. -->
         <item name="colorOnTertiary">@color/white_trans_LV2</item>
         <item name="colorOnTertiaryContainer">@color/white_trans_LV1</item>
-        <item name="colorOnTertiaryFixed">@color/white</item>
+        <item name="colorOnTertiaryFixed">@color/white_trans_LV3</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

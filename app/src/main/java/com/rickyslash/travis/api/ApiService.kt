@@ -21,7 +21,8 @@ interface ApiService {
         @Field("password") password: String,
         @Field("age") age: String,
         @Field("gender") gender: String,
-        @Field("travel_preferences[]") travelPreferences: List<String>
+        @Field("travel_preferences[]") travelPreferences: List<String>,
+        @Field("picture_url") profilePhoto: String
     ): Call<SignupResponse>
 
     @FormUrlEncoded

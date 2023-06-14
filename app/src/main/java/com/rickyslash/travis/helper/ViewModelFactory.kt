@@ -7,6 +7,7 @@ import com.rickyslash.travis.helper.di.Injection
 import com.rickyslash.travis.ui.login.LoginViewModel
 import com.rickyslash.travis.ui.main.MainViewModel
 import com.rickyslash.travis.ui.main.pages.bonding.BondingViewModel
+import com.rickyslash.travis.ui.main.pages.home.HomeViewModel
 import com.rickyslash.travis.ui.main.pages.menubox.MenuBoxViewModel
 import com.rickyslash.travis.ui.settings.preference.TravelPreferenceViewModel
 
@@ -19,6 +20,9 @@ class ViewModelFactory(private val application: Application): ViewModelProvider.
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(Injection.providePreferences(application)) as T
+            }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(Injection.providePreferences(application)) as T
             }
             modelClass.isAssignableFrom(BondingViewModel::class.java) -> {
                 BondingViewModel(Injection.providePreferences(application)) as T

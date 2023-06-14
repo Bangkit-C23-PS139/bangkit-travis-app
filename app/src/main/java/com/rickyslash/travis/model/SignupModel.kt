@@ -11,4 +11,5 @@ data class SignupModel (
     var gender: String? = null,
     var age: Int = 0,
     var travelPreferences: List<String>? = listOf(),
+    var profilePhoto: String? = null
 ): Parcelable

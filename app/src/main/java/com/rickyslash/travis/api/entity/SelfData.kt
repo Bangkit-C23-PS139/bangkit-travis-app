@@ -20,7 +20,7 @@ data class SelfData(
     val gender: String,
 
     @field:SerializedName("picture_url")
-    val pictureUrl: Any,
+    val pictureUrl: String,
 
     @field:SerializedName("travel_preferences")
     val travelPreferences: List<String>,

@@ -76,6 +76,7 @@ class LoginViewModel(private val currentPreferences: CurrentStatePreferences): V
                             CurrentStateModel(
                                 name = responseBody.data.nama,
                                 travelPreferences = responseBody.data.travelPreferences.toMutableSet(),
+                                profilePhoto = responseBody.data.pictureUrl,
                                 accessToken = accessToken,
                                 refreshToken = refreshToken,
                                 isLogin = true

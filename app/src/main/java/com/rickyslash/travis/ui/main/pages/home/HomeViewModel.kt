@@ -3,11 +3,13 @@ package com.rickyslash.travis.ui.main.pages.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.rickyslash.travis.model.CurrentStateModel
+import com.rickyslash.travis.model.CurrentStatePreferences
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val currentPreferences: CurrentStatePreferences): ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    fun getPreferences(): CurrentStateModel {
+        return currentPreferences.getCurrentState()
     }
-    val text: LiveData<String> = _text
+
 }

@@ -15,6 +15,7 @@
 
     <color name="white_trans_LV1">#33FFFFFF</color>
     <color name="white_trans_LV2">#66FFFFFF</color>
+    <color name="white_trans_LV3">#99FFFFFF</color>
     <color name="black_trans_LV1">#33CB9A68</color>
     <color name="black_trans_LV2">#66CB9A68</color>
     <color name="black_trans_LV3">#99CB9A68</color>
