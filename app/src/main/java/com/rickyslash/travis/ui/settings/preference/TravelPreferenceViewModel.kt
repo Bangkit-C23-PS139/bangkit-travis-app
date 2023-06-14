@@ -127,6 +127,6 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
     }
 
     companion object {
-        private const val DICEBEAR = "https://api.dicebear.com/6.x/thumbs/svg?seed="
+        private const val DICEBEAR = "https://api.dicebear.com/6.x/thumbs/jpg?seed="
     }
 }

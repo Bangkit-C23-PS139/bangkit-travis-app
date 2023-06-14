@@ -70,6 +70,7 @@ class TravelPreferenceActivity : AppCompatActivity() {
                         isErrorObserver = Observer { isError ->
                             if (!isError) {
                                 val intent = Intent(this@TravelPreferenceActivity, MainActivity::class.java)
+                                Toast.makeText(this, R.string.label_process_success, Toast.LENGTH_SHORT).show()
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
                                 finish()
