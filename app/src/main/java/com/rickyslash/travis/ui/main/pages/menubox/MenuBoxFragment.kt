@@ -31,8 +31,12 @@ class MenuBoxFragment : Fragment() {
 
     private fun setupAction() {
         binding.mcvMenuboxLogout.setOnClickListener {
-            menuBoxViewModel.logout()
-            Toast.makeText(requireActivity(), R.string.label_logout_success, Toast.LENGTH_SHORT).show()
+            if (menuBoxViewModel.getPreferences().isLogin) {
+                menuBoxViewModel.logout()
+                Toast.makeText(requireActivity(), R.string.label_logout_success, Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireActivity(), R.string.label_logout_already, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
