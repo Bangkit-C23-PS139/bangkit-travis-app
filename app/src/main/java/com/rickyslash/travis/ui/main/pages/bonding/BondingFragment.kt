@@ -1,20 +1,30 @@
 package com.rickyslash.travis.ui.main.pages.bonding
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.rickyslash.travis.R
 import com.rickyslash.travis.api.response.BondingListDataItem
 import com.rickyslash.travis.databinding.FragmentBondingBinding
 import com.rickyslash.travis.helper.ViewModelFactory
+import com.rickyslash.travis.helper.removeKabupatenKota
 import com.rickyslash.travis.ui.login.LoginActivity
 import com.rickyslash.travis.ui.main.pages.bonding.bondingdetail.BondingDetailActivity
 
@@ -30,6 +40,9 @@ class BondingFragment : Fragment() {
     private var responseMessageObserver: Observer<String?>? = null
     private var joinResponseMessageObserver: Observer<String?>? = null
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val locationPermissionRequestCode = 1
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,6 +50,23 @@ class BondingFragment : Fragment() {
     ): View {
         setupView()
         setupViewModel()
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            getLastKnownLocation()
+        } else {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
+                locationPermissionRequestCode
+            )
+        }
+
         return binding.root
     }
 
@@ -124,6 +154,41 @@ class BondingFragment : Fragment() {
         isLoadingObserver = Observer { showLoading(it) }
         isLoadingObserver?.let {
             bondingViewModel.isLoading.observe(requireActivity(), it)
+        }
+    }
+
+    private fun getLastKnownLocation() {
+        if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location: Location? ->
+                    if (location != null) {
+                        val geocoder = Geocoder(requireActivity())
+                        val addresses: List<Address>? = geocoder.getFromLocation(
+                            location.latitude,
+                            location.longitude,
+                            1
+                        )
+                        if (addresses?.isNotEmpty() == true) {
+                            val cityName = removeKabupatenKota(addresses[0].subAdminArea)
+                            Log.d("BondingFragment", addresses[0].toString())
+                            binding.tvBondingLabelHeaderTitle.text = cityName
+                        }
+                    }
+                }
+        } else {
+            Toast.makeText(requireActivity(), R.string.err_location_self_fail, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == locationPermissionRequestCode) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                grantResults[1] == PackageManager.PERMISSION_GRANTED
+            ) {
+                getLastKnownLocation()
+            } else {
+                Toast.makeText(requireActivity(), R.string.err_location_permission_missing, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

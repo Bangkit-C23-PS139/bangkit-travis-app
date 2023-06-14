@@ -80,6 +80,11 @@ fun convertSnakeCaseToSentence(snakeCase: String): String {
         .joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
 }
 
+fun removeKabupatenKota(s: String): String {
+    return s.replace("Kabupaten ", "")
+        .replace("Kota ", "")
+}
+
 fun uriToFile(selectedImg: Uri, context: Context): File {
     val contentResolver: ContentResolver = context.contentResolver
     val myFile = createTempFile(context)

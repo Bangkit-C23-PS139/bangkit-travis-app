@@ -1,14 +1,9 @@
 package com.rickyslash.travis.ui.main.pages.bonding
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rickyslash.travis.api.ApiConfig
-import com.rickyslash.travis.api.dummy.DummyApiConfig
-import com.rickyslash.travis.api.dummy.dummyresponse.DummyBondingItem
-import com.rickyslash.travis.api.dummy.dummyresponse.DummyBondingResponse
-import com.rickyslash.travis.api.entity.BondingData
 import com.rickyslash.travis.api.response.BondingListDataItem
 import com.rickyslash.travis.api.response.BondingListResponse
 import com.rickyslash.travis.api.response.LinkToBondingResponse
