@@ -12,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginViewModel(private val userPreferences: CurrentStatePreferences): ViewModel() {
+class LoginViewModel(private val currentPreferences: CurrentStatePreferences): ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -72,7 +72,7 @@ class LoginViewModel(private val userPreferences: CurrentStatePreferences): View
                     if (responseBody != null) {
                         _isError.value = responseBody.message != "Berhasil menemukan user"
                         _responseMessage.value = responseBody.message
-                        userPreferences.setUser(
+                        currentPreferences.setUser(
                             CurrentStateModel(
                                 name = responseBody.data.nama,
                                 travelPreferences = responseBody.data.travelPreferences.toMutableSet(),

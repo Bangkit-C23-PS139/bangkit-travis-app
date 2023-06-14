@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BondingViewModel(private val userPreferences: CurrentStatePreferences) : ViewModel() {
+class BondingViewModel(private val currentPreferences: CurrentStatePreferences) : ViewModel() {
 
     private val _listBondingData = MutableLiveData<List<BondingListDataItem>>()
     val listBondingData: LiveData<List<BondingListDataItem>> = _listBondingData
@@ -32,7 +32,7 @@ class BondingViewModel(private val userPreferences: CurrentStatePreferences) : V
     val joinResponseMessage: LiveData<String?> = _joinResponseMessage
 
     fun getPreferences(): CurrentStateModel {
-        return userPreferences.getUser()
+        return currentPreferences.getUser()
     }
 
     fun getBondingList() {

@@ -15,10 +15,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TravelPreferenceViewModel(private val userPreferences: CurrentStatePreferences): ViewModel() {
+class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePreferences): ViewModel() {
 
     fun getSelfPreferences(): List<String> {
-        return userPreferences.getUser().travelPreferences?.toList() ?: listOf()
+        return currentPreferences.getUser().travelPreferences?.toList() ?: listOf()
     }
 
     fun getTravelPreferences(): List<String> {
@@ -35,11 +35,11 @@ class TravelPreferenceViewModel(private val userPreferences: CurrentStatePrefere
     val responseMessage: LiveData<String?> = _responseMessage
 
     fun getPreferences(): CurrentStateModel {
-        return userPreferences.getUser()
+        return currentPreferences.getUser()
     }
 
     fun setTravelPreference(newPreference: List<String>) {
-        userPreferences.setTravelPreference(newPreference.toSet())
+        currentPreferences.setTravelPreference(newPreference.toSet())
     }
 
     fun updateTravelPreference(newPreference: List<String>) {
