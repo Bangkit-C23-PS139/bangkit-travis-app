@@ -1,10 +1,9 @@
 package com.rickyslash.travis.model
 
-data class UserModel (
+data class CurrentStateModel (
     var name: String? = null,
-    var gender: String? = null,
-    var age: Int = 0,
     var travelPreferences: Set<String>? = setOf(),
+    var currentLocation: String? = null,
     var accessToken: String? = null,
     var refreshToken: String? = null,
     var isLogin: Boolean = false

@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModel
 import com.rickyslash.travis.api.ApiConfig
 import com.rickyslash.travis.api.response.LoginResponse
 import com.rickyslash.travis.api.response.SelfDataResponse
-import com.rickyslash.travis.model.UserModel
-import com.rickyslash.travis.model.UserSharedPreferences
+import com.rickyslash.travis.model.CurrentStateModel
+import com.rickyslash.travis.model.CurrentStatePreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginViewModel(private val userPreferences: UserSharedPreferences): ViewModel() {
+class LoginViewModel(private val userPreferences: CurrentStatePreferences): ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -73,10 +73,8 @@ class LoginViewModel(private val userPreferences: UserSharedPreferences): ViewMo
                         _isError.value = responseBody.message != "Berhasil menemukan user"
                         _responseMessage.value = responseBody.message
                         userPreferences.setUser(
-                            UserModel(
+                            CurrentStateModel(
                                 name = responseBody.data.nama,
-                                gender = responseBody.data.gender,
-                                age = responseBody.data.age,
                                 travelPreferences = responseBody.data.travelPreferences.toMutableSet(),
                                 accessToken = accessToken,
                                 refreshToken = refreshToken,

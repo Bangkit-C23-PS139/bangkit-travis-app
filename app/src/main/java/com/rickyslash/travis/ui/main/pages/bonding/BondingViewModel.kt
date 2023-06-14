@@ -8,13 +8,13 @@ import com.rickyslash.travis.api.response.BondingListDataItem
 import com.rickyslash.travis.api.response.BondingListResponse
 import com.rickyslash.travis.api.response.LinkToBondingResponse
 import com.rickyslash.travis.helper.getFirstWord
-import com.rickyslash.travis.model.UserModel
-import com.rickyslash.travis.model.UserSharedPreferences
+import com.rickyslash.travis.model.CurrentStateModel
+import com.rickyslash.travis.model.CurrentStatePreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BondingViewModel(private val userPreferences: UserSharedPreferences) : ViewModel() {
+class BondingViewModel(private val userPreferences: CurrentStatePreferences) : ViewModel() {
 
     private val _listBondingData = MutableLiveData<List<BondingListDataItem>>()
     val listBondingData: LiveData<List<BondingListDataItem>> = _listBondingData
@@ -31,7 +31,7 @@ class BondingViewModel(private val userPreferences: UserSharedPreferences) : Vie
     private val _joinResponseMessage = MutableLiveData<String?>()
     val joinResponseMessage: LiveData<String?> = _joinResponseMessage
 
-    fun getPreferences(): UserModel {
+    fun getPreferences(): CurrentStateModel {
         return userPreferences.getUser()
     }
 

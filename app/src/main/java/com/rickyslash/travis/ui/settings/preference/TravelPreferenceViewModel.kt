@@ -9,16 +9,13 @@ import com.rickyslash.travis.api.response.SignupResponse
 import com.rickyslash.travis.api.response.UpdateSelfUserResponse
 import com.rickyslash.travis.model.SignupModel
 import com.rickyslash.travis.model.TravelPreferenceDataSource
-import com.rickyslash.travis.model.UserModel
-import com.rickyslash.travis.model.UserSharedPreferences
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
+import com.rickyslash.travis.model.CurrentStateModel
+import com.rickyslash.travis.model.CurrentStatePreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TravelPreferenceViewModel(private val userPreferences: UserSharedPreferences): ViewModel() {
+class TravelPreferenceViewModel(private val userPreferences: CurrentStatePreferences): ViewModel() {
 
     fun getSelfPreferences(): List<String> {
         return userPreferences.getUser().travelPreferences?.toList() ?: listOf()
@@ -37,7 +34,7 @@ class TravelPreferenceViewModel(private val userPreferences: UserSharedPreferenc
     private val _responseMessage = MutableLiveData<String?>()
     val responseMessage: LiveData<String?> = _responseMessage
 
-    fun getPreferences(): UserModel {
+    fun getPreferences(): CurrentStateModel {
         return userPreferences.getUser()
     }
 

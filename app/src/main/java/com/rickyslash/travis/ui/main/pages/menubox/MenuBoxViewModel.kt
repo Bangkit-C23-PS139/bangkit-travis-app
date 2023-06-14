@@ -1,13 +1,13 @@
 package com.rickyslash.travis.ui.main.pages.menubox
 
 import androidx.lifecycle.ViewModel
-import com.rickyslash.travis.model.UserModel
-import com.rickyslash.travis.model.UserSharedPreferences
+import com.rickyslash.travis.model.CurrentStateModel
+import com.rickyslash.travis.model.CurrentStatePreferences
 
-class MenuBoxViewModel(private val userPreferences: UserSharedPreferences): ViewModel() {
+class MenuBoxViewModel(private val userPreferences: CurrentStatePreferences): ViewModel() {
 
     fun logout() {
-        userPreferences.setUser(UserModel())
+        userPreferences.setUser(CurrentStateModel())
     }
 
 }
