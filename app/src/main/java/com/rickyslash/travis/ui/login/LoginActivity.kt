@@ -42,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupAction() {
+        binding.appbarTop.setNavigationOnClickListener { this.onBackPressedDispatcher.onBackPressed() }
         binding.btnLogin.setOnClickListener {
             val email = binding.edtxEmail.text.toString()
             val password = binding.edtxPass.text.toString()
@@ -54,9 +55,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 else -> {
                     isLoadingObserver = Observer { showLoading(it) }
-                    isLoadingObserver?.let {
-                        loginViewModel.isLoading.observe(this, it)
-                    }
+                    isLoadingObserver?.let { loginViewModel.isLoading.observe(this, it) }
                     loginViewModel.userLogin(email, password)
                     isErrorObserver = Observer { isError ->
                         if (!isError) {

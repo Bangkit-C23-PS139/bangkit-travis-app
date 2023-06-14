@@ -74,11 +74,14 @@ class LoginViewModel(private val userPreferences: UserSharedPreferences): ViewMo
                         _responseMessage.value = responseBody.message
                         userPreferences.setUser(
                             UserModel(
-                            name = responseBody.data.nama,
-                            gender = responseBody.data.gender,
-                            age = responseBody.data.age,
-                            travelPreferences = responseBody.data.travelPreferences.toMutableSet()
-                        )
+                                name = responseBody.data.nama,
+                                gender = responseBody.data.gender,
+                                age = responseBody.data.age,
+                                travelPreferences = responseBody.data.travelPreferences.toMutableSet(),
+                                accessToken = accessToken,
+                                refreshToken = refreshToken,
+                                isLogin = true
+                            )
                         )
                         _responseMessage.value = null
                     }
