@@ -105,6 +105,7 @@
     <string name="err_gender_empty">Please choose gender</string>
     <string name="err_location_self_fail">There\'s a trouble getting your location :(</string>
     <string name="err_location_permission_missing">We need permission to run the app :(</string>
+    <string name="err_preferences_empty">Travel Preferences can\'t be empty :(</string>
 
     <!-- Signup Gender -->
     <string-array name="gender">

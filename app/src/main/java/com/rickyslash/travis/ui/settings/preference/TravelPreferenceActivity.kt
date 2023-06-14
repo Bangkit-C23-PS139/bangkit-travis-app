@@ -62,27 +62,31 @@ class TravelPreferenceActivity : AppCompatActivity() {
                     isLoadingObserver?.let { travelPreferenceViewModel.isLoading.observe(this, it) }
 
                     selectedPreferences = if (::travelPreferenceAdapter.isInitialized) travelPreferenceAdapter.getCheckedPreference() else mutableListOf()
-                    signupData?.travelPreferences = selectedPreferences
+                    if (selectedPreferences.isNotEmpty()) {
+                        signupData?.travelPreferences = selectedPreferences
 
-                    dataSignupOrUpdateExecution(signupData, selectedPreferences)
+                        dataSignupOrUpdateExecution(signupData, selectedPreferences)
 
-                    isErrorObserver = Observer { isError ->
-                        if (!isError) {
-                            Toast.makeText(this, R.string.label_process_success, Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this@TravelPreferenceActivity, MainActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(intent)
-                            finish()
+                        isErrorObserver = Observer { isError ->
+                            if (!isError) {
+                                val intent = Intent(this@TravelPreferenceActivity, MainActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
+                                finish()
+                            }
                         }
-                    }
-                    responseMessageObserver = Observer { responseMessage ->
-                        if (responseMessage != null && travelPreferenceViewModel.isError.value == true) {
-                            Toast.makeText(this, responseMessage, Toast.LENGTH_SHORT).show()
+                        responseMessageObserver = Observer { responseMessage ->
+                            if (responseMessage != null && travelPreferenceViewModel.isError.value == true) {
+                                Toast.makeText(this, responseMessage, Toast.LENGTH_SHORT).show()
+                            }
                         }
+                        isErrorObserver?.let { travelPreferenceViewModel.isError.observe(this, it) }
+                        responseMessageObserver?.let { travelPreferenceViewModel.responseMessage.observe(this, it) }
+                        true
+                    } else {
+                        Toast.makeText(this, R.string.err_preferences_empty, Toast.LENGTH_SHORT).show()
+                        false
                     }
-                    isErrorObserver?.let { travelPreferenceViewModel.isError.observe(this, it) }
-                    responseMessageObserver?.let { travelPreferenceViewModel.responseMessage.observe(this, it) }
-                    true
                 }
                 else -> false
             }
