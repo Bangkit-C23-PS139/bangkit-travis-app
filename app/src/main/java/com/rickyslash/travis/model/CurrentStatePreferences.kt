@@ -6,7 +6,7 @@ class CurrentStatePreferences(context: Context) {
 
     private val preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-    fun setUser(value: CurrentStateModel) {
+    fun setCurrentState(value: CurrentStateModel) {
         val editor = preferences.edit()
         editor.putString(NAME, value.name)
         editor.putStringSet(TRAVEL_PREFERENCE, value.travelPreferences)
@@ -16,7 +16,7 @@ class CurrentStatePreferences(context: Context) {
         editor.apply()
     }
 
-    fun getUser(): CurrentStateModel {
+    fun getCurrentState(): CurrentStateModel {
         val model = CurrentStateModel()
         model.name = preferences.getString(NAME, "")
         model.travelPreferences = preferences.getStringSet(TRAVEL_PREFERENCE, setOf())

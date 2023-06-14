@@ -32,7 +32,7 @@ class BondingViewModel(private val currentPreferences: CurrentStatePreferences) 
     val joinResponseMessage: LiveData<String?> = _joinResponseMessage
 
     fun getPreferences(): CurrentStateModel {
-        return currentPreferences.getUser()
+        return currentPreferences.getCurrentState()
     }
 
     fun getBondingList() {

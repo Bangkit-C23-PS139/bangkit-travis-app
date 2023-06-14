@@ -72,7 +72,7 @@ class LoginViewModel(private val currentPreferences: CurrentStatePreferences): V
                     if (responseBody != null) {
                         _isError.value = responseBody.message != "Berhasil menemukan user"
                         _responseMessage.value = responseBody.message
-                        currentPreferences.setUser(
+                        currentPreferences.setCurrentState(
                             CurrentStateModel(
                                 name = responseBody.data.nama,
                                 travelPreferences = responseBody.data.travelPreferences.toMutableSet(),

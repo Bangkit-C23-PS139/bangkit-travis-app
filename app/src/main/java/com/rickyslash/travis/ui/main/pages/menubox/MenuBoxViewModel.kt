@@ -7,7 +7,7 @@ import com.rickyslash.travis.model.CurrentStatePreferences
 class MenuBoxViewModel(private val currentPreferences: CurrentStatePreferences): ViewModel() {
 
     fun logout() {
-        currentPreferences.setUser(CurrentStateModel())
+        currentPreferences.setCurrentState(CurrentStateModel())
     }
 
 }
