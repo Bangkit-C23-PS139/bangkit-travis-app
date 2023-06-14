@@ -31,6 +31,12 @@ class UserSharedPreferences(context: Context) {
         return model
     }
 
+    fun setTravelPreference(newPreference: Set<String>) {
+        val editor = preferences.edit()
+        editor.putStringSet(TRAVEL_PREFERENCE, newPreference)
+        editor.apply()
+    }
+
     companion object {
         private const val PREFS_NAME = "user_preferences"
         private const val NAME = "name"

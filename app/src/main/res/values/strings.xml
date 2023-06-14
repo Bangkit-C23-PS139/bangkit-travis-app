@@ -45,6 +45,8 @@
     <string name="label_menu_box">Menu Box</string>
     <string name="label_logout">Logout</string>
     <string name="label_logout_success">Successfully logged out :)</string>
+    <string name="label_age">Age</string>
+    <string name="label_process_success">Boom! Process completed 🎉</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
@@ -62,6 +64,7 @@
     <string name="desc_item_tplan_edit">Edit Travel Plan item</string>
     <string name="desc_app_logo">Travis Mascot</string>
     <string name="desc_signup_upload_photo">Upload profile photo</string>
+    <string name="desc_gender_choose">Choose gender</string>
 
     <string name="default_date">Date</string>
     <string name="default_destination">Destination</string>
@@ -97,4 +100,16 @@
 
     <string name="err_email_invalid">Please enter a valid email address</string>
     <string name="err_password_less_8">Password must be at least 8 characters long</string>
+    <string name="err_name_empty">Name can\'t be empty</string>
+    <string name="err_age_empty">Age can\'t be empty</string>
+    <string name="err_gender_empty">Please choose gender</string>
+    <string name="err_location_self_fail">There\'s a trouble getting your location :(</string>
+    <string name="err_location_permission_missing">We need permission to run the app :(</string>
+
+    <!-- Signup Gender -->
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
 </resources>

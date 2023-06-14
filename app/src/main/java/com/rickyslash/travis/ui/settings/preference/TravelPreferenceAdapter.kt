@@ -37,7 +37,6 @@ class TravelPreferenceAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = travelPreferenceList[position]
-        val isDataSelected = selfPreferenceList.contains(data)
         val isSelected = selectedPreference.contains(data)
 
         holder.radioButton.isChecked = isSelected

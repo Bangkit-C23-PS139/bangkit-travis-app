@@ -1,9 +1,6 @@
 package com.rickyslash.travis.api
 
-import com.rickyslash.travis.api.response.BondingListResponse
-import com.rickyslash.travis.api.response.LinkToBondingResponse
-import com.rickyslash.travis.api.response.LoginResponse
-import com.rickyslash.travis.api.response.SelfDataResponse
+import com.rickyslash.travis.api.response.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -15,6 +12,23 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<LoginResponse>
+
+    @FormUrlEncoded
+    @POST("/auth/register")
+    fun userSignup(
+        @Field("nama") name: String,
+        @Field("email") email: String,
+        @Field("password") password: String,
+        @Field("age") age: String,
+        @Field("gender") gender: String,
+        @Field("travel_preferences[]") travelPreferences: List<String>
+    ): Call<SignupResponse>
+
+    @FormUrlEncoded
+    @PUT("/users/self")
+    fun updateTravelPreference(
+        @Field("travel_preferences[]") travelPreferences: List<String>
+    ): Call<UpdateSelfUserResponse>
 
     @GET("/users/self")
     fun getSelfUser(): Call<SelfDataResponse>
