@@ -1,7 +1,5 @@
 package com.rickyslash.travis.ui.main.pages.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rickyslash.travis.model.CurrentStateModel
 import com.rickyslash.travis.model.CurrentStatePreferences

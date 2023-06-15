@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.view.isEmpty
 import androidx.lifecycle.ViewModelProvider
 import com.rickyslash.travis.R
 import com.rickyslash.travis.databinding.ActivitySignupBinding

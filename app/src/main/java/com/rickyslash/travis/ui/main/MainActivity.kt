@@ -6,7 +6,6 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -39,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         setupNavigation()
         setupViewModel()
         checkLocationPermission()
+    }
+
+    private fun getIntentExtra() {
     }
 
     private fun setupViewModel() {
@@ -107,4 +109,5 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         navView.setupWithNavController(navController)
     }
+
 }

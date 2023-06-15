@@ -14,11 +14,11 @@
     <item
         android:id="@+id/navigation_service"
         android:icon="@drawable/ic_selector_filling_beach"
-        android:title="@string/label_service" />
+        android:title="@string/label_service_title" />
 
     <item
         android:id="@+id/navigation_menu_box"
         android:icon="@drawable/ic_selector_filling_widgets"
-        android:title="@string/label_profile"/>
+        android:title="@string/label_menu_box"/>
 
 </menu>
