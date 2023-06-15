@@ -17,7 +17,7 @@
             android:id="@+id/fl_item_highlight"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.8">
+            android:layout_weight="0.75">
 
             <ImageView
                 android:id="@+id/iv_item_highlight_img"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|start"
                 android:layout_margin="24dp"
-                app:cardBackgroundColor="@color/white_trans_LV1"
+                app:cardBackgroundColor="?attr/colorOnTertiaryContainer"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
 
@@ -62,7 +62,7 @@
                         android:layout_marginBottom="8dp"
                         app:cardCornerRadius="64dp"
                         app:cardElevation="0dp"
-                        app:strokeColor="@color/white_trans_LV2"
+                        app:strokeColor="?attr/colorOnTertiary"
                         app:strokeWidth="2dp">
 
                         <ImageView
@@ -82,7 +82,7 @@
                         android:layout_marginBottom="8dp"
                         app:cardCornerRadius="64dp"
                         app:cardElevation="0dp"
-                        app:strokeColor="@color/white_trans_LV2"
+                        app:strokeColor="?attr/colorOnTertiary"
                         app:strokeWidth="2dp">
 
                         <ImageView
@@ -101,7 +101,7 @@
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="64dp"
                         app:cardElevation="0dp"
-                        app:strokeColor="@color/white_trans_LV2"
+                        app:strokeColor="?attr/colorOnTertiary"
                         app:strokeWidth="2dp">
 
                         <ImageView
@@ -173,7 +173,7 @@
             android:id="@+id/cl_item_highlight_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.2"
+            android:layout_weight="0.25"
             android:paddingLeft="24dp"
             android:paddingRight="24dp">
 
@@ -181,6 +181,7 @@
                 android:id="@+id/ll_item_highlight_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
