@@ -48,6 +48,7 @@
     <string name="label_age">Age</string>
     <string name="label_process_success">Boom! Process completed 🎉</string>
     <string name="label_logout_already">You are not signed in!</string>
+    <string name="label_retry">Retry</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
@@ -107,6 +108,8 @@
     <string name="err_location_self_fail">There\'s a trouble getting your location :(</string>
     <string name="err_location_permission_missing">We need permission to run the app :(</string>
     <string name="err_preferences_empty">Please choose at least 1 Travel Preferences :)</string>
+
+    <string name="info_city_unavailable">Your city is still unavailable. We\'re showing Yogyakarta instead 🙂 (currently only Yogyakarta &amp; Jakarta Pusat is available)</string>
 
     <!-- Signup Gender -->
     <string-array name="gender">

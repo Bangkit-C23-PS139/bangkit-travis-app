@@ -6,19 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.rickyslash.travis.api.dummy.DummyApiConfig
-import com.rickyslash.travis.api.dummy.dummyresponse.DummyHighlightResponse
-import com.rickyslash.travis.api.dummy.dummyresponse.HighlightItem
 import com.rickyslash.travis.api.response.HighlightDataItem
 import com.rickyslash.travis.data.TravelRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.rickyslash.travis.model.CurrentStateModel
+import com.rickyslash.travis.model.CurrentStatePreferences
 
-class HighlightViewModel(travelRepository: TravelRepository): ViewModel() {
-
-    private val _listHighlightItem = MutableLiveData<List<HighlightItem>>()
-    val listHighlightItem: LiveData<List<HighlightItem>> = _listHighlightItem
+class HighlightViewModel(private val currentPreferences: CurrentStatePreferences, travelRepository: TravelRepository): ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -30,41 +23,10 @@ class HighlightViewModel(travelRepository: TravelRepository): ViewModel() {
     val responseMessage: LiveData<String?> = _responseMessage
 
     val highlight: LiveData<PagingData<HighlightDataItem>> =
-        travelRepository.getHighlight().cachedIn(viewModelScope)
+        travelRepository.getHighlight(currentPreferences.getCurrentState().currentLocation!!).cachedIn(viewModelScope)
 
-    fun getHighlights() {
-        _isLoading.value = true
-        val client = DummyApiConfig.getApiService().getHighlights()
-        client.enqueue(object : Callback<DummyHighlightResponse> {
-            override fun onResponse(
-                call: Call<DummyHighlightResponse>,
-                response: Response<DummyHighlightResponse>
-            ) {
-                if (response.isSuccessful) {
-                    _isLoading.value = false
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        _isError.value = responseBody.error
-                        _responseMessage.value = responseBody.message
-                        _listHighlightItem.value = responseBody.listHighlight
-                        _responseMessage.value = null
-                    }
-                } else {
-                    _isLoading.value = false
-                    _isError.value = true
-                    _responseMessage.value = response.message()
-                    _responseMessage.value = null
-                }
-            }
-
-            override fun onFailure(call: Call<DummyHighlightResponse>, t: Throwable) {
-                _isLoading.value = false
-                _isError.value = true
-                _responseMessage.value = t.message
-                _responseMessage.value = null
-            }
-
-        })
+    fun getCurrentCity(): String? {
+        return currentPreferences.getCurrentState().currentLocation
     }
 
 }

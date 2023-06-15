@@ -35,7 +35,7 @@ class ViewModelFactory(private val application: Application): ViewModelProvider.
                 MenuBoxViewModel(Injection.providePreferences(application)) as T
             }
             modelClass.isAssignableFrom(HighlightViewModel::class.java) -> {
-                HighlightViewModel(Injection.provideRepository(application)) as T
+                HighlightViewModel(Injection.providePreferences(application), Injection.provideRepository(application)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

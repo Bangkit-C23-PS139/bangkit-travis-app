@@ -27,7 +27,6 @@
             android:layout_height="?attr/actionBarSize"
             app:contentInsetEnd="0dp"
             app:contentInsetStart="0dp"
-            app:menu="@menu/main_menu"
             app:navigationIcon="@drawable/ic_round_arrow_back_ios_24">
 
         </com.google.android.material.appbar.MaterialToolbar>
@@ -63,14 +62,14 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tv_home_header_date"
+                    android:id="@+id/tv_highlight_header_label"
                     style="@style/TextViewHeaderLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_highlight" />
 
                 <TextView
-                    android:id="@+id/tv_highlight_label_header_title"
+                    android:id="@+id/tv_highlight_header_title"
                     style="@style/TextViewHeaderTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

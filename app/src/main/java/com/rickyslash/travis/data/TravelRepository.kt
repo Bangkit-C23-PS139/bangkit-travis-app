@@ -9,13 +9,14 @@ import com.rickyslash.travis.api.ApiService
 import com.rickyslash.travis.api.response.HighlightDataItem
 
 class TravelRepository(private val apiService: ApiService) {
-    fun getHighlight(): LiveData<PagingData<HighlightDataItem>> {
+    fun getHighlight(city: String): LiveData<PagingData<HighlightDataItem>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 5
+                pageSize = 5,
+                initialLoadSize = 5
             ),
             pagingSourceFactory = {
-                HighlightPagingSource(apiService)
+                HighlightPagingSource(apiService, city)
             }
         ).liveData
     }

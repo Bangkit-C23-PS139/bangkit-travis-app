@@ -42,4 +42,11 @@ interface ApiService {
     @GET("/activity")
     fun getBondingList(): Call<BondingListResponse>
 
+    @GET("/destination")
+    suspend fun getHighlight(
+        @Query("page") page: Int = 0,
+        @Query("pagesize") size: Int = 5,
+        @Query("city") city: String
+    ): HighlightResponse
+
 }
