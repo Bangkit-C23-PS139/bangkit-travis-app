@@ -10,6 +10,7 @@ import com.rickyslash.travis.ui.main.MainViewModel
 import com.rickyslash.travis.ui.main.pages.bonding.BondingViewModel
 import com.rickyslash.travis.ui.main.pages.home.HomeViewModel
 import com.rickyslash.travis.ui.main.pages.menubox.MenuBoxViewModel
+import com.rickyslash.travis.ui.main.pages.service.ServiceViewModel
 import com.rickyslash.travis.ui.settings.preference.TravelPreferenceViewModel
 
 class ViewModelFactory(private val application: Application): ViewModelProvider.NewInstanceFactory() {
@@ -36,6 +37,9 @@ class ViewModelFactory(private val application: Application): ViewModelProvider.
             }
             modelClass.isAssignableFrom(HighlightViewModel::class.java) -> {
                 HighlightViewModel(Injection.providePreferences(application), Injection.provideRepository(application)) as T
+            }
+            modelClass.isAssignableFrom(ServiceViewModel::class.java) -> {
+                ServiceViewModel(Injection.providePreferences(application), Injection.provideRepository(application)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

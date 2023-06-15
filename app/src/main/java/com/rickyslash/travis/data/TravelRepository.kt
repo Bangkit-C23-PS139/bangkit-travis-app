@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.rickyslash.travis.api.ApiService
 import com.rickyslash.travis.api.response.HighlightDataItem
+import com.rickyslash.travis.api.response.ServiceDataItem
 
 class TravelRepository(private val apiService: ApiService) {
     fun getHighlight(city: String): LiveData<PagingData<HighlightDataItem>> {
@@ -17,6 +18,17 @@ class TravelRepository(private val apiService: ApiService) {
             ),
             pagingSourceFactory = {
                 HighlightPagingSource(apiService, city)
+            }
+        ).liveData
+    }
+    fun getService(city: String): LiveData<PagingData<ServiceDataItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5,
+                initialLoadSize = 5
+            ),
+            pagingSourceFactory = {
+                ServicePagingSource(apiService, city)
             }
         ).liveData
     }

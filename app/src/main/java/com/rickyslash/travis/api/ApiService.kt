@@ -49,4 +49,11 @@ interface ApiService {
         @Query("city") city: String
     ): HighlightResponse
 
+    @GET("/travel/service")
+    suspend fun getService(
+        @Query("page") page: Int = 0,
+        @Query("pagesize") size: Int = 5,
+        @Query("city") city: String
+    ): ServiceResponse
+
 }

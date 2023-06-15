@@ -109,7 +109,7 @@
     <string name="err_location_permission_missing">We need permission to run the app :(</string>
     <string name="err_preferences_empty">Please choose at least 1 Travel Preferences :)</string>
 
-    <string name="info_city_unavailable">Your city is still unavailable. We\'re showing Yogyakarta instead 🙂 (currently only Yogyakarta &amp; Jakarta Pusat is available)</string>
+    <string name="info_city_unavailable">Your city is still unavailable. We\'re showing Yogyakarta instead 🙂\n(currently only Yogyakarta &amp; Jakarta Pusat is available)</string>
 
     <!-- Signup Gender -->
     <string-array name="gender">

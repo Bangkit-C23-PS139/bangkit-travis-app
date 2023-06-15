@@ -1,18 +1,21 @@
 package com.rickyslash.travis.ui.main.pages.service
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rickyslash.travis.api.dummy.dummyresponse.ServiceItem
+import com.rickyslash.travis.api.response.ServiceDataItem
 import com.rickyslash.travis.databinding.ItemServiceBinding
 import com.rickyslash.travis.helper.formatPriceToK
 import com.rickyslash.travis.helper.getRandomMaterialColor
 
-class ServiceAdapter(private val serviceList: List<ServiceItem>): RecyclerView.Adapter<ServiceAdapter.ViewHolder>() {
-
-    inner class ViewHolder(var binding: ItemServiceBinding): RecyclerView.ViewHolder(binding.root)
+class ServiceAdapter: PagingDataAdapter<ServiceDataItem, ServiceAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemCallback: OnItemClickCallback
 
@@ -25,23 +28,43 @@ class ServiceAdapter(private val serviceList: List<ServiceItem>): RecyclerView.A
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = serviceList.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = serviceList[position]
-        holder.binding.tvItemServiceTitle.text = data.description
-        holder.binding.tvItemServiceProvider.text = data.name
-        holder.binding.tvItemServicePrice.text = formatPriceToK(data.createdAt.substring(0,4).toInt())
-        Glide.with(holder.itemView.context)
-            .load(data.photoUrl)
-            .placeholder(ColorDrawable(getRandomMaterialColor()))
-            .into(holder.binding.ivItemService)
+        val data = getItem(position)
+        if (data != null) {
+            holder.bind(data)
+            holder.itemView.setOnClickListener {
+                val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.gmapLink))
+                holder.itemView.context.startActivity(navIntent)
+            }
+        }
+    }
 
-        holder.itemView.setOnClickListener { onItemCallback.onItemClicked(serviceList[position]) }
+    inner class ViewHolder(var binding: ItemServiceBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: ServiceDataItem) {
+            binding.tvItemServiceTitle.text = data.serviceName
+            binding.tvItemServiceProvider.text = data.serviceProvider
+            binding.tvItemServicePrice.text = formatPriceToK(data.servicePrice)
+            Glide.with(itemView.context)
+                .load(data.backgroundImg)
+                .placeholder(ColorDrawable(getRandomMaterialColor()))
+                .into(binding.ivItemService)
+        }
     }
 
     interface OnItemClickCallback {
         fun onItemClicked(data: ServiceItem)
+    }
+
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ServiceDataItem>() {
+            override fun areItemsTheSame(oldItem: ServiceDataItem, newItem: ServiceDataItem): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: ServiceDataItem, newItem: ServiceDataItem): Boolean {
+                return oldItem.id == newItem.id
+            }
+        }
     }
 
 }
