@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.rickyslash.travis.api.ApiConfig
 import com.rickyslash.travis.api.response.LoginResponse
 import com.rickyslash.travis.api.response.SelfDataResponse
-import com.rickyslash.travis.model.CurrentStateModel
 import com.rickyslash.travis.model.CurrentStatePreferences
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,6 +21,10 @@ class LoginViewModel(private val currentPreferences: CurrentStatePreferences): V
     private val _responseMessage = MutableLiveData<String?>()
     val responseMessage: LiveData<String?> = _responseMessage
 
+    fun setTokens(accessToken: String, refreshToken: String) {
+        currentPreferences.setTokens(accessToken, refreshToken)
+    }
+
     fun userLogin(email: String, password: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().userLogin(email, password)
@@ -36,11 +39,12 @@ class LoginViewModel(private val currentPreferences: CurrentStatePreferences): V
                     if (responseBody != null) {
                         _isError.value = responseBody.message != "berhasil melakukan autentikasi"
                         _responseMessage.value = responseBody.message
-                        userLoginSetData(
+                        setTokens(
                             responseBody.userStatus.tokenData.accessToken,
                             responseBody.userStatus.tokenData.refreshToken
                         )
                         _responseMessage.value = null
+                        userLoginSetData()
                     }
                 } else {
                     _isLoading.value = false
@@ -59,9 +63,9 @@ class LoginViewModel(private val currentPreferences: CurrentStatePreferences): V
         })
     }
 
-    fun userLoginSetData(accessToken: String, refreshToken: String) {
+    fun userLoginSetData() {
         _isLoading.value = true
-        val client = ApiConfig.getApiService(accessToken, refreshToken).getSelfUser()
+        val client = ApiConfig.getApiService(currentPreferences).getSelfUser()
         client.enqueue(object : Callback<SelfDataResponse> {
             override fun onResponse(
                 call: Call<SelfDataResponse>,
@@ -72,15 +76,11 @@ class LoginViewModel(private val currentPreferences: CurrentStatePreferences): V
                     if (responseBody != null) {
                         _isError.value = responseBody.message != "Berhasil menemukan user"
                         _responseMessage.value = responseBody.message
-                        currentPreferences.setCurrentState(
-                            CurrentStateModel(
-                                name = responseBody.data.nama,
-                                travelPreferences = responseBody.data.travelPreferences.toMutableSet(),
-                                profilePhoto = responseBody.data.pictureUrl,
-                                accessToken = accessToken,
-                                refreshToken = refreshToken,
-                                isLogin = true
-                            )
+                        currentPreferences.setUserDetails(
+                            name = responseBody.data.nama,
+                            travelPreferences = responseBody.data.travelPreferences.toMutableSet(),
+                            profilePhoto = responseBody.data.pictureUrl,
+                            isLogin = true
                         )
                         _responseMessage.value = null
                     }
