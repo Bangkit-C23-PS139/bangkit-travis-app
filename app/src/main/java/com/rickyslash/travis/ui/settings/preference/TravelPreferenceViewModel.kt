@@ -43,10 +43,8 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
     }
 
     fun updateTravelPreference(newPreference: List<String>) {
-        val preferences = getPreferences()
         _isLoading.value = true
-
-        val client = ApiConfig.getApiService(preferences.accessToken, preferences.refreshToken)
+        val client = ApiConfig.getApiService(currentPreferences)
             .updateTravelPreference(newPreference)
         client.enqueue(object : Callback<UpdateSelfUserResponse> {
             override fun onResponse(
@@ -82,7 +80,7 @@ class TravelPreferenceViewModel(private val currentPreferences: CurrentStatePref
     fun userSignup(signupData: SignupModel?) {
         _isLoading.value = true
         if (signupData != null) {
-            val client = ApiConfig.getApiService().userSignup(
+            val client = ApiConfig.getApiService(currentPreferences).userSignup(
                 name = signupData.name!!,
                 email = signupData.email!!,
                 password = signupData.password!!,

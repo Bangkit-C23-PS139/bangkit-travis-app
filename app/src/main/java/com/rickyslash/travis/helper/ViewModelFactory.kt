@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.rickyslash.travis.helper.di.Injection
+import com.rickyslash.travis.ui.highlight.HighlightViewModel
 import com.rickyslash.travis.ui.login.LoginViewModel
 import com.rickyslash.travis.ui.main.MainViewModel
 import com.rickyslash.travis.ui.main.pages.bonding.BondingViewModel
@@ -32,6 +33,9 @@ class ViewModelFactory(private val application: Application): ViewModelProvider.
             }
             modelClass.isAssignableFrom(MenuBoxViewModel::class.java) -> {
                 MenuBoxViewModel(Injection.providePreferences(application)) as T
+            }
+            modelClass.isAssignableFrom(HighlightViewModel::class.java) -> {
+                HighlightViewModel(Injection.provideRepository(application)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

@@ -36,9 +36,8 @@ class BondingViewModel(private val currentPreferences: CurrentStatePreferences) 
     }
 
     fun getBondingList() {
-        val preferences = getPreferences()
         _isLoading.value = true
-        val client = ApiConfig.getApiService(preferences.accessToken, preferences.refreshToken).getBondingList()
+        val client = ApiConfig.getApiService(currentPreferences).getBondingList()
         client.enqueue(object : Callback<BondingListResponse> {
             override fun onResponse(
                 call: Call<BondingListResponse>,
@@ -71,7 +70,7 @@ class BondingViewModel(private val currentPreferences: CurrentStatePreferences) 
     }
 
     fun joinBonding(bondingId: String) {
-        val client = ApiConfig.getApiService().linkToBonding(bondingId)
+        val client = ApiConfig.getApiService(currentPreferences).linkToBonding(bondingId)
         client.enqueue(object : Callback<LinkToBondingResponse> {
             override fun onResponse(
                 call: Call<LinkToBondingResponse>,

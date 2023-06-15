@@ -31,6 +31,15 @@ class CurrentStatePreferences(context: Context) {
         return model
     }
 
+    fun setUserDetails(name: String, travelPreferences: Set<String>, profilePhoto: String, isLogin: Boolean) {
+        val editor = preferences.edit()
+        editor.putString(NAME, name)
+        editor.putStringSet(TRAVEL_PREFERENCE, travelPreferences)
+        editor.putString(PROFILE_PHOTO, profilePhoto)
+        editor.putBoolean(IS_LOGIN, isLogin)
+        editor.apply()
+    }
+
     fun setTravelPreference(newPreference: Set<String>) {
         val editor = preferences.edit()
         editor.putStringSet(TRAVEL_PREFERENCE, newPreference)
@@ -40,6 +49,13 @@ class CurrentStatePreferences(context: Context) {
     fun setCurrentLocation(loc: String) {
         val editor = preferences.edit()
         editor.putString(CURRENT_LOCATION, loc)
+        editor.apply()
+    }
+
+    fun setTokens(accessToken: String, refreshToken: String) {
+        val editor = preferences.edit()
+        editor.putString(ACCESS_TOKEN, accessToken)
+        editor.putString(REFRESH_TOKEN, refreshToken)
         editor.apply()
     }
 
