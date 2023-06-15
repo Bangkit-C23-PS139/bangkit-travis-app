@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:menuCategory="container">
+        <item
+            android:id="@+id/promote_highlight"
+            android:icon="@drawable/ic_baseline_whatsapp_24"
+            android:title="@string/label_promote_highlight"
+            app:showAsAction="withText"/>
+    </group>
+</menu>

@@ -1,6 +1,7 @@
 package com.rickyslash.travis.ui.main.pages.service
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +10,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.rickyslash.travis.R
 import com.rickyslash.travis.api.dummy.dummyresponse.ServiceItem
 import com.rickyslash.travis.data.LoadingStateAdapter
 import com.rickyslash.travis.databinding.FragmentServiceBinding
 import com.rickyslash.travis.helper.ViewModelFactory
+import com.rickyslash.travis.helper.getFirstWord
 import com.rickyslash.travis.ui.main.pages.service.servicedetail.ServiceDetailActivity
 
 class ServiceFragment : Fragment() {
@@ -32,7 +35,21 @@ class ServiceFragment : Fragment() {
 
     private fun setupView() {
         setupRV()
-        binding.tvServiceHeaderTitle.text = serviceViewModel.getCurrentCity()
+        binding.tvServiceHeaderTitle.text = serviceViewModel.getPreferences().currentLocation
+
+        binding.btnServiceRequest.setOnClickListener {
+            val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.dummy_wa)))
+            startActivity(navIntent)
+        }
+
+        if (serviceViewModel.getPreferences().isLogin) {
+            Glide.with(this)
+                .load(serviceViewModel.getPreferences().profilePhoto)
+                .placeholder(R.drawable.dummy_home_upload)
+                .into(binding.ivAvatar)
+        } else {
+            binding.ivAvatar.setImageResource(R.drawable.dummy_home_upload)
+        }
     }
 
     private fun setupViewModel() {
@@ -60,7 +77,7 @@ class ServiceFragment : Fragment() {
             footer = LoadingStateAdapter { serviceAdapter.retry() }
         )
 
-        val currentCity = serviceViewModel.getCurrentCity()
+        val currentCity = serviceViewModel.getPreferences().currentLocation
         if (!currentCity.equals("YOGYAKARTA", ignoreCase = true) && !currentCity.equals("JAKARTA PUSAT", ignoreCase = true)) {
             Toast.makeText(requireActivity(), R.string.info_city_unavailable, Toast.LENGTH_LONG).show()
         }

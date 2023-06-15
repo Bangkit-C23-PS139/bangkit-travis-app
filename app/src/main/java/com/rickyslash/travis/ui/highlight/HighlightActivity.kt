@@ -1,6 +1,7 @@
 package com.rickyslash.travis.ui.highlight
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -42,6 +43,16 @@ class HighlightActivity : AppCompatActivity() {
         setHighlightData()
         binding.appbarTop.setNavigationOnClickListener {
             this.onBackPressedDispatcher.onBackPressed()
+        }
+        binding.appbarTop.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                R.id.promote_highlight -> {
+                    val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.dummy_wa)))
+                    startActivity(navIntent)
+                    true
+                }
+                else -> false
+            }
         }
     }
 

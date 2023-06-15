@@ -53,7 +53,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="?attr/colorOnTertiaryFixed"
-            app:strokeWidth="3dp">
+            app:strokeWidth="1dp">
 
             <ImageView
                 android:id="@+id/iv_avatar"
@@ -63,21 +63,34 @@
                 android:contentDescription="@string/desc_user_avatar"
                 android:maxWidth="64dp"
                 android:maxHeight="64dp"
-                android:src="@drawable/dummy_home_avatar_real" />
+                android:src="@drawable/dummy_home_upload" />
 
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_service_request"
+        style="@style/ButtonMaterialRegularTransparent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/label_post_service"
+        app:icon="@drawable/ic_baseline_whatsapp_24"
+        app:iconGravity="textStart"
+        app:layout_constraintEnd_toEndOf="@+id/cl_service_header"
+        app:layout_constraintStart_toStartOf="@+id/cl_service_header"
+        app:layout_constraintTop_toBottomOf="@+id/cl_service_header" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_service"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_service_header"
+        app:layout_constraintTop_toBottomOf="@+id/btn_service_request"
         tools:listitem="@layout/item_service" />
 
     <ProgressBar

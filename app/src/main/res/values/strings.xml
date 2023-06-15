@@ -50,6 +50,8 @@
     <string name="label_logout_already">You are not signed in!</string>
     <string name="label_retry">Retry</string>
     <string name="label_request_bonding">Request Bonding Event!</string>
+    <string name="label_post_service">Post Your Service!</string>
+    <string name="label_promote_highlight">Promote Your Place!</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>

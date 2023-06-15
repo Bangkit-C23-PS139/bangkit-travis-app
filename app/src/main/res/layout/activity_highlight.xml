@@ -15,7 +15,7 @@
         android:paddingHorizontal="8dp"
         android:paddingVertical="8dp"
         android:paddingStart="10dp"
-        android:paddingEnd="10dp"
+        android:paddingEnd="18dp"
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +27,7 @@
             android:layout_height="?attr/actionBarSize"
             app:contentInsetEnd="0dp"
             app:contentInsetStart="0dp"
+            app:menu="@menu/highlight_menu"
             app:navigationIcon="@drawable/ic_round_arrow_back_ios_24">
 
         </com.google.android.material.appbar.MaterialToolbar>
