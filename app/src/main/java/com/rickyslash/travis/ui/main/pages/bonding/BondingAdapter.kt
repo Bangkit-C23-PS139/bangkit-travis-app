@@ -5,17 +5,17 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.rickyslash.travis.api.entity.BondingData
+import com.rickyslash.travis.api.response.BondingDataItem
 import com.rickyslash.travis.api.response.BondingListDataItem
 import com.rickyslash.travis.databinding.ItemBondingBinding
 import com.rickyslash.travis.helper.getStartDateFromISODate
 import com.rickyslash.travis.helper.getRandomMaterialColor
 
-class BondingAdapter(private val bondingList: List<BondingListDataItem>): RecyclerView.Adapter<BondingAdapter.ViewHolder>() {
-
-    inner class ViewHolder(var binding: ItemBondingBinding): RecyclerView.ViewHolder(binding.root)
+class BondingAdapter: PagingDataAdapter<BondingDataItem, BondingAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemCallback: OnItemClickCallback
     private lateinit var onButtonJoinClickCallback: OnButtonJoinClickCallback
@@ -33,30 +33,39 @@ class BondingAdapter(private val bondingList: List<BondingListDataItem>): Recycl
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = bondingList.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = bondingList[position]
-        holder.binding.tvItemBondingTitle.text = data.activityName
-        holder.binding.tvItemBondingDate.text = getStartDateFromISODate(data.createdAt)
-        holder.binding.ivThumb1.setImageDrawable(ColorDrawable(getRandomMaterialColor()))
-        holder.binding.ivThumb2.setImageDrawable(ColorDrawable(getRandomMaterialColor()))
-        holder.binding.ivThumb3.setImageDrawable(ColorDrawable(getRandomMaterialColor()))
-        if (!data.backgroundImg.isNullOrEmpty()) {
-            Glide.with(holder.itemView.context)
+        val data = getItem(position)
+        if (data != null) {
+            holder.bind(data)
+            holder.itemView.setOnClickListener {
+                val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.gmapLink))
+                holder.itemView.context.startActivity(navIntent)
+            }
+        }
+    }
+
+    inner class ViewHolder(var binding: ItemBondingBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: BondingDataItem) {
+            binding.tvItemBondingTitle.text = data.activityName
+            binding.tvItemBondingDate.text = getStartDateFromISODate(data.createdAt)
+            binding.ivThumb1.setImageDrawable(ColorDrawable(getRandomMaterialColor()))
+            binding.ivThumb2.setImageDrawable(ColorDrawable(getRandomMaterialColor()))
+            binding.ivThumb3.setImageDrawable(ColorDrawable(getRandomMaterialColor()))
+            Glide.with(itemView.context)
                 .load(data.backgroundImg)
                 .placeholder(ColorDrawable(getRandomMaterialColor()))
-                .into(holder.binding.ivItemBondingImg)
-        }
+                .into(binding.ivItemBondingImg)
 
-        holder.binding.btnBondingNavigate.setOnClickListener {
-            val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.gmapLink))
-            holder.itemView.context.startActivity(navIntent)
-        }
+            binding.btnItemBondingMore.setOnClickListener {
+                val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.gmapLink))
+                itemView.context.startActivity(navIntent)
+            }
 
-        holder.binding.btnItemBondingJoin.setOnClickListener { onButtonJoinClickCallback.onButtonJoinClicked(bondingList[position].id) }
-        holder.binding.btnItemBondingMore.setOnClickListener{ onItemCallback.onItemClicked(bondingList[position]) }
-        holder.itemView.setOnClickListener { onItemCallback.onItemClicked(bondingList[position]) }
+            binding.btnBondingNavigate.setOnClickListener {
+                val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.gmapLink))
+                itemView.context.startActivity(navIntent)
+            }
+        }
     }
 
     interface OnItemClickCallback {
@@ -65,6 +74,18 @@ class BondingAdapter(private val bondingList: List<BondingListDataItem>): Recycl
 
     interface OnButtonJoinClickCallback {
         fun onButtonJoinClicked(bondingId: String)
+    }
+
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<BondingDataItem>() {
+            override fun areItemsTheSame(oldItem: BondingDataItem, newItem: BondingDataItem): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: BondingDataItem, newItem: BondingDataItem): Boolean {
+                return oldItem.id == newItem.id
+            }
+        }
     }
 
 }

@@ -39,9 +39,6 @@ interface ApiService {
         @Path("activity_id") bondingId: String
     ): Call<LinkToBondingResponse>
 
-    @GET("/activity")
-    fun getBondingList(): Call<BondingListResponse>
-
     @GET("/destination")
     suspend fun getHighlight(
         @Query("page") page: Int = 0,
@@ -55,5 +52,12 @@ interface ApiService {
         @Query("pagesize") size: Int = 5,
         @Query("city") city: String
     ): ServiceResponse
+
+    @GET("/activity")
+    suspend fun getBonding(
+        @Query("page") page: Int = 0,
+        @Query("pagesize") size: Int = 5,
+        @Query("city") city: String
+    ): BondingResponse
 
 }

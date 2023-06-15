@@ -6,6 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.rickyslash.travis.api.ApiService
+import com.rickyslash.travis.api.response.BondingDataItem
 import com.rickyslash.travis.api.response.HighlightDataItem
 import com.rickyslash.travis.api.response.ServiceDataItem
 
@@ -29,6 +30,17 @@ class TravelRepository(private val apiService: ApiService) {
             ),
             pagingSourceFactory = {
                 ServicePagingSource(apiService, city)
+            }
+        ).liveData
+    }
+    fun getBonding(city: String): LiveData<PagingData<BondingDataItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5,
+                initialLoadSize = 5
+            ),
+            pagingSourceFactory = {
+                BondingPagingSource(apiService, city)
             }
         ).liveData
     }

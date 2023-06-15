@@ -26,9 +26,6 @@ class ViewModelFactory(private val application: Application): ViewModelProvider.
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(Injection.providePreferences(application)) as T
             }
-            modelClass.isAssignableFrom(BondingViewModel::class.java) -> {
-                BondingViewModel(Injection.providePreferences(application)) as T
-            }
             modelClass.isAssignableFrom(TravelPreferenceViewModel::class.java) -> {
                 TravelPreferenceViewModel(Injection.providePreferences(application)) as T
             }
@@ -40,6 +37,9 @@ class ViewModelFactory(private val application: Application): ViewModelProvider.
             }
             modelClass.isAssignableFrom(ServiceViewModel::class.java) -> {
                 ServiceViewModel(Injection.providePreferences(application), Injection.provideRepository(application)) as T
+            }
+            modelClass.isAssignableFrom(BondingViewModel::class.java) -> {
+                BondingViewModel(Injection.providePreferences(application), Injection.provideRepository(application)) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
