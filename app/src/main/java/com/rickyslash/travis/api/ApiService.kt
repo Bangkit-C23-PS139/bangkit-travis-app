@@ -1,6 +1,7 @@
 package com.rickyslash.travis.api
 
 import com.rickyslash.travis.api.response.*
+import com.rickyslash.travis.model.DestinationRecomRequest
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -64,5 +65,10 @@ interface ApiService {
     fun unlinkBonding(
         @Path("activity_id") bondingId: String
     ): Call<LinkToBondingResponse>
+
+    @POST("/get-destination-recommendation")
+    fun getDestinationRecom(
+        @Body request: DestinationRecomRequest
+    ): Call<DestinationRecomResponse>
 
 }

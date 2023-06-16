@@ -1,21 +1,9 @@
 package com.rickyslash.travis.helper
 
-import android.content.ContentResolver
-import android.content.Context
 import android.graphics.Color
-import android.net.Uri
-import android.os.Environment
-import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
-
-private const val MAXIMAL_SIZE = 1000000
-
-val timeStamp: String = SimpleDateFormat("dd-MMM-yyyy", Locale.US).format(System.currentTimeMillis())
 
 fun getDateToday(): String {
     val currentDate = Calendar.getInstance().time
@@ -85,25 +73,29 @@ fun removeKabupatenKota(s: String): String {
         .replace("Kota ", "")
 }
 
-fun addKabupatenKota(city: String): String {
-    var area = "Kota"
-    if (city.equals("Bantul", ignoreCase = true) ||
-        city.equals("Gunung Kidul", ignoreCase = true) ||
-        city.equals("Kulon Progo", ignoreCase = true) ||
-        city.equals("Sleman", ignoreCase = true) ||
-        city.equals("Kepulauan Seribu", ignoreCase = true)
-    ) {
-        area = "Kabupaten"
-    } else if (city.equals("Yogyakarta", ignoreCase = true) ||
-        city.equals("Jakarta Barat", ignoreCase = true) ||
-        city.equals("Jakarta Pusat", ignoreCase = true) ||
-        city.equals("Jakarta Selatan", ignoreCase = true) ||
-        city.equals("Jakarta Timur", ignoreCase = true) ||
-        city.equals("Jakarta Utara", ignoreCase = true)
-    ) {
-        area = "Kota"
+fun addKabupatenKotaPrefix(city: String): String {
+    if (!getFirstWord(city).equals("Kota", ignoreCase = true) && !getFirstWord(city).equals("Kabupaten", ignoreCase = true)) {
+        var area = "Kota"
+        if (city.equals("Bantul", ignoreCase = true) ||
+            city.equals("Gunung Kidul", ignoreCase = true) ||
+            city.equals("Kulon Progo", ignoreCase = true) ||
+            city.equals("Sleman", ignoreCase = true) ||
+            city.equals("Kepulauan Seribu", ignoreCase = true)
+        ) {
+            area = "Kabupaten"
+        } else if (city.equals("Yogyakarta", ignoreCase = true) ||
+            city.equals("Jakarta Barat", ignoreCase = true) ||
+            city.equals("Jakarta Pusat", ignoreCase = true) ||
+            city.equals("Jakarta Selatan", ignoreCase = true) ||
+            city.equals("Jakarta Timur", ignoreCase = true) ||
+            city.equals("Jakarta Utara", ignoreCase = true)
+        ) {
+            area = "Kota"
+        }
+        return "$area ${city.split(" ").joinToString(" ") { it -> it.lowercase().replaceFirstChar { it.uppercase() } }}"
+    } else {
+        return city
     }
-    return "$area ${city.split(" ").joinToString(" ") { it -> it.lowercase().replaceFirstChar { it.uppercase() } }}"
 }
 
 fun generateRandomSeed(length: Int): String {
@@ -119,23 +111,34 @@ fun getHomeImage(): String {
     return "https://source.unsplash.com/1024x768/?${locations[randomIndex]}"
 }
 
-fun uriToFile(selectedImg: Uri, context: Context): File {
-    val contentResolver: ContentResolver = context.contentResolver
-    val myFile = createTempFile(context)
-
-    val inputStream = contentResolver.openInputStream(selectedImg) as InputStream
-    val outputStream: OutputStream = FileOutputStream(myFile)
-
-    val buf = ByteArray(1024)
-    var len: Int
-    while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
-
-    outputStream.close()
-    inputStream.close()
-    return myFile
+fun filterFoodPreference(travelPreference: List<String>): List<String> {
+    return travelPreference.filter { item ->
+        item in setOf(
+            "makanan_chinese",
+            "makanan_jepang",
+            "makanan_tradisional",
+            "makanan_western",
+            "pedas",
+            "daging"
+        )
+    }
 }
 
-fun createTempFile(context: Context): File {
-    val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-    return File.createTempFile(timeStamp, ".jpg", storageDir)
+fun filterNotFoodPreference(travelPreference: List<String>): List<String> {
+    return travelPreference.filterNot { item ->
+        item in setOf(
+            "makanan_chinese",
+            "makanan_jepang",
+            "makanan_tradisional",
+            "makanan_western",
+            "pedas",
+            "daging"
+        )
+    }
+}
+
+fun extractDestinationKeyword(s: String): String {
+    val regex = Regex("'(.*?)'")
+    val matchResult = regex.find(s)
+    return matchResult?.groupValues?.getOrNull(1) ?: "Destinasi"
 }

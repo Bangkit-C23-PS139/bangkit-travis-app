@@ -13,6 +13,7 @@ import com.rickyslash.travis.ui.main.pages.menubox.MenuBoxViewModel
 import com.rickyslash.travis.ui.main.pages.service.ServiceViewModel
 import com.rickyslash.travis.ui.profile.ProfileViewModel
 import com.rickyslash.travis.ui.settings.preference.TravelPreferenceViewModel
+import com.rickyslash.travis.ui.travelplan.TravelPlanViewModel
 
 class ViewModelFactory(private val application: Application): ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
@@ -35,6 +36,9 @@ class ViewModelFactory(private val application: Application): ViewModelProvider.
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(Injection.providePreferences(application)) as T
+            }
+            modelClass.isAssignableFrom(TravelPlanViewModel::class.java) -> {
+                TravelPlanViewModel(Injection.providePreferences(application)) as T
             }
             modelClass.isAssignableFrom(HighlightViewModel::class.java) -> {
                 HighlightViewModel(Injection.providePreferences(application), Injection.provideRepository(application)) as T

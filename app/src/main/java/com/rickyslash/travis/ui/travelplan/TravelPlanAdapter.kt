@@ -13,11 +13,12 @@ import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputEditText
 import com.rickyslash.travis.R
 import com.rickyslash.travis.api.dummy.dummyresponse.TravelPlanItem
+import com.rickyslash.travis.api.response.DestinationRecommendationItem
 import com.rickyslash.travis.databinding.ItemTravelPlanBinding
+import com.rickyslash.travis.helper.extractDestinationKeyword
 import com.rickyslash.travis.helper.getRandomMaterialColor
-import com.rickyslash.travis.helper.getTimeFromISODate
 
-class TravelPlanAdapter(private val travelPlanList: List<TravelPlanItem>): RecyclerView.Adapter<TravelPlanAdapter.ViewHolder>() {
+class TravelPlanAdapter(private val travelPlanList: List<DestinationRecommendationItem>): RecyclerView.Adapter<TravelPlanAdapter.ViewHolder>() {
 
     inner class ViewHolder(var binding: ItemTravelPlanBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -36,28 +37,32 @@ class TravelPlanAdapter(private val travelPlanList: List<TravelPlanItem>): Recyc
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = travelPlanList[position]
-        holder.binding.tvItemTplanTime.text = getTimeFromISODate(data.createdAt)
+        holder.binding.tvItemTplanLabel.text = extractDestinationKeyword(data.keywordCategory)
         holder.binding.tvItemTplanTitle.text = data.name
-        holder.binding.tvItemTplanDesc.text = data.description
+        holder.binding.tvItemTplanDesc.text = data.address
         Glide.with(holder.itemView.context)
-            .load(data.photoUrl)
+            .load(data.imgUrl)
             .placeholder(ColorDrawable(getRandomMaterialColor()))
             .into(holder.binding.ivItemTplan)
 
         holder.binding.btnItemTplanEdit.setOnClickListener { dialogPromptEdit(holder.itemView.context, data, (holder.binding)) }
+
         holder.binding.btnItemTplanNavigate.setOnClickListener {
-            val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.photoUrl))
+            val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.mapUrl))
             holder.itemView.context.startActivity(navIntent)
         }
 
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(travelPlanList[position]) }
+        holder.itemView.setOnClickListener {
+            val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.mapUrl))
+            holder.itemView.context.startActivity(navIntent)
+        }
     }
 
     interface OnItemClickCallback {
         fun onItemClicked(data: TravelPlanItem)
     }
 
-    private fun dialogPromptEdit(context: Context, data: TravelPlanItem, binding: ItemTravelPlanBinding) {
+    private fun dialogPromptEdit(context: Context, data: DestinationRecommendationItem, binding: ItemTravelPlanBinding) {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.view_dialog_tplan_item_edit, null)
         val dialogTitle = dialogView.findViewById<TextInputEditText>(R.id.edtx_dialog_tplan_title)
         val dialogDesc = dialogView.findViewById<TextInputEditText>(R.id.edtx_dialog_tplan_desc)
@@ -72,12 +77,14 @@ class TravelPlanAdapter(private val travelPlanList: List<TravelPlanItem>): Recyc
                     else -> {
                         if (!dialogDesc.text.isNullOrBlank()) {
                             binding.tvItemTplanDesc.text = dialogDesc.text.toString()
-                            data.description = dialogDesc.text.toString()
+                            data.address = dialogDesc.text.toString()
                         }
                         binding.tvItemTplanTitle.text = dialogTitle.text.toString()
                         data.name = dialogTitle.text.toString()
                         binding.ivItemTplan.setImageResource(R.drawable.thumb_tplan_custom)
-                        data.photoUrl = null
+                        binding.tvItemTplanLabel.text = context.getString(R.string.label_user_input)
+                        data.keywordCategory = "['User Input']"
+                        data.imgUrl = "https://source.unsplash.com/512x512/?${dialogTitle.text.toString()}"
                     }
                 }
             }

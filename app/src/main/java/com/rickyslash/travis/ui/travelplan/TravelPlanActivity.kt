@@ -10,7 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rickyslash.travis.R
 import com.rickyslash.travis.api.dummy.dummyresponse.TravelPlanItem
+import com.rickyslash.travis.api.response.DestinationRecommendationItem
 import com.rickyslash.travis.databinding.ActivityTravelPlanBinding
+import com.rickyslash.travis.helper.ViewModelFactory
+import com.rickyslash.travis.helper.filterFoodPreference
+import com.rickyslash.travis.helper.filterNotFoodPreference
 import com.rickyslash.travis.ui.travelplan.travelplandetail.TravelPlanDetailActivity
 
 class TravelPlanActivity : AppCompatActivity() {
@@ -28,17 +32,23 @@ class TravelPlanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setupView()
         setupViewModel()
+        setupView()
         setupAction()
     }
 
     private fun setupView() {
         setupRV()
+        val city = travelPlanViewModel.getPreferences().currentLocation
+        binding.tvTplanHeaderTitle.text = city
+        if (!city.equals("YOGYAKARTA", ignoreCase = true) && !city.equals("JAKARTA PUSAT", ignoreCase = true)) {
+            Toast.makeText(this, R.string.info_city_unavailable, Toast.LENGTH_LONG).show()
+        }
+
     }
 
     private fun setupViewModel() {
-        travelPlanViewModel = ViewModelProvider(this)[TravelPlanViewModel::class.java]
+        travelPlanViewModel = ViewModelProvider(this, ViewModelFactory(application))[TravelPlanViewModel::class.java]
         setupRecyclerViewData()
         observeLoading()
     }
@@ -50,7 +60,9 @@ class TravelPlanActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerViewData() {
-        travelPlanViewModel.getTravelPlan()
+        val travelPreference = filterNotFoodPreference(travelPlanViewModel.getPreferences().travelPreferences?.toList() ?: listOf())
+        val restoPreference = filterFoodPreference(travelPlanViewModel.getPreferences().travelPreferences?.toList() ?: listOf())
+        travelPlanViewModel.getTravelPlan(travelPreference, restoPreference)
         isErrorObserver = Observer { isError ->
             if (!isError) {
                 travelPlanViewModel.listTravelPlanItem.observe(this) {
@@ -78,7 +90,7 @@ class TravelPlanActivity : AppCompatActivity() {
         binding.rvTplan.layoutManager = layoutManager
     }
 
-    private fun setTravelPlanData(travelPlanData: List<TravelPlanItem>) {
+    private fun setTravelPlanData(travelPlanData: List<DestinationRecommendationItem>) {
         val travelPlanAdapter = TravelPlanAdapter(travelPlanData)
         binding.rvTplan.adapter = travelPlanAdapter
 

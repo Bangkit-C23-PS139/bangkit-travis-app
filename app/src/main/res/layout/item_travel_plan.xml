@@ -64,11 +64,12 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/tv_item_tplan_time"
+                        android:id="@+id/tv_item_tplan_label"
                         style="@style/TextViewCardLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/default_destination_type"
+                        android:textAllCaps="true"
                         android:textStyle="bold"
                         tools:text="@string/dummy_destination_type" />
 

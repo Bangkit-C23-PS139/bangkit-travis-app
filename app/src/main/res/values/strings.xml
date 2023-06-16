@@ -56,6 +56,7 @@
     <string name="label_bonding_join_success">Joined! Lets have fun! 🎉</string>
     <string name="label_bonding_unlink_success">Unlinked! :)</string>
     <string name="label_joined">Joined</string>
+    <string name="label_user_input">User Input</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
