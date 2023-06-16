@@ -13,6 +13,7 @@ import com.rickyslash.travis.databinding.FragmentHomeBinding
 import com.rickyslash.travis.helper.ViewModelFactory
 import com.rickyslash.travis.helper.getDateToday
 import com.rickyslash.travis.helper.getFirstWord
+import com.rickyslash.travis.helper.getHomeImage
 import com.rickyslash.travis.ui.highlight.HighlightActivity
 import com.rickyslash.travis.ui.login.LoginActivity
 import com.rickyslash.travis.ui.profile.ProfileActivity
@@ -54,6 +55,10 @@ class HomeFragment : Fragment() {
             binding.tvHomeHeaderTitle.text = getString(R.string.default_home_name)
             binding.ivAvatar.setImageResource(R.drawable.dummy_home_upload)
         }
+        Glide.with(this)
+            .load(getHomeImage())
+            .placeholder(R.drawable.dummy_home_highlight_placeholder)
+            .into(binding.ivImageHighlight)
     }
 
     private fun setupAction() {

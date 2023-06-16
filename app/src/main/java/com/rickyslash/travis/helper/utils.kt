@@ -85,11 +85,38 @@ fun removeKabupatenKota(s: String): String {
         .replace("Kota ", "")
 }
 
+fun addKabupatenKota(city: String): String {
+    var area = "Kota"
+    if (city.equals("Bantul", ignoreCase = true) ||
+        city.equals("Gunung Kidul", ignoreCase = true) ||
+        city.equals("Kulon Progo", ignoreCase = true) ||
+        city.equals("Sleman", ignoreCase = true) ||
+        city.equals("Kepulauan Seribu", ignoreCase = true)
+    ) {
+        area = "Kabupaten"
+    } else if (city.equals("Yogyakarta", ignoreCase = true) ||
+        city.equals("Jakarta Barat", ignoreCase = true) ||
+        city.equals("Jakarta Pusat", ignoreCase = true) ||
+        city.equals("Jakarta Selatan", ignoreCase = true) ||
+        city.equals("Jakarta Timur", ignoreCase = true) ||
+        city.equals("Jakarta Utara", ignoreCase = true)
+    ) {
+        area = "Kota"
+    }
+    return "$area ${city.split(" ").joinToString(" ") { it -> it.lowercase().replaceFirstChar { it.uppercase() } }}"
+}
+
 fun generateRandomSeed(length: Int): String {
     val chars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
     return (1..length)
         .map { chars.random() }
         .joinToString("")
+}
+
+fun getHomeImage(): String {
+    val locations = listOf("Yogyakarta", "Bali", "Jakarta", "Indonesia")
+    val randomIndex = Random.nextInt(locations.size)
+    return "https://source.unsplash.com/1024x768/?${locations[randomIndex]}"
 }
 
 fun uriToFile(selectedImg: Uri, context: Context): File {

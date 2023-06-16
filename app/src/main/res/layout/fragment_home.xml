@@ -98,7 +98,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/desc_highlighted_destination"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/dummy_home_highlight" />
+                    android:src="@drawable/dummy_home_highlight_placeholder" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/mcv_tags_1"
@@ -253,10 +253,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:alpha="0.15"
+                android:alpha="0.2"
                 android:contentDescription="@string/desc_background_yogyakarta"
                 android:scaleType="centerCrop"
-                android:src="@drawable/dummy_home_highlight" />
+                android:src="@drawable/dummy_home_bg_bnw" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_home_generate"
