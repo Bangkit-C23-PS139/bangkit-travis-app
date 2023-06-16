@@ -1,5 +1,6 @@
 package com.rickyslash.travis.ui.profile
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,6 +13,7 @@ import com.rickyslash.travis.R
 import com.rickyslash.travis.api.entity.BondingData
 import com.rickyslash.travis.databinding.ActivityProfileBinding
 import com.rickyslash.travis.helper.ViewModelFactory
+import com.rickyslash.travis.ui.main.MainActivity
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -55,6 +57,19 @@ class ProfileActivity : AppCompatActivity() {
     private fun setupAction() {
         binding.appbarTop.setNavigationOnClickListener {
             this.onBackPressedDispatcher.onBackPressed()
+        }
+        binding.appbarTop.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.menu_profile_logout -> {
+                    val intent = Intent(this@ProfileActivity, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                    finish()
+                    profileViewModel.logout()
+                    true
+                }
+                else -> false
+            }
         }
     }
 

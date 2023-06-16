@@ -31,6 +31,12 @@ class ProfileViewModel(private val currentPreferences: CurrentStatePreferences):
         return currentPreferences.getCurrentState()
     }
 
+    fun logout() {
+        currentPreferences.setCurrentState(CurrentStateModel(
+            currentLocation = getPreferences().currentLocation
+        ))
+    }
+
     fun getSelfBondingItems() {
         _isLoading.value = true
         val client = ApiConfig.getApiService(currentPreferences).getSelfUser()
