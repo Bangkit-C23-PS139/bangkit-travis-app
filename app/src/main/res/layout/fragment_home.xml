@@ -1,274 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/ll_home_container"
     android:background="?attr/colorSecondary"
-    android:fillViewport="true"
+    android:orientation="vertical"
+    android:paddingStart="32dp"
+    android:paddingTop="32dp"
+    android:paddingEnd="32dp"
+    android:paddingBottom="16dp"
     tools:context=".ui.main.pages.home.HomeFragment">
 
-    <LinearLayout
-        android:id="@+id/ll_home_container"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_highlight_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingStart="32dp"
-        android:paddingTop="32dp"
-        android:paddingEnd="32dp"
-        android:paddingBottom="16dp">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_highlight_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_header_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mcv_home_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:id="@+id/ll_header_info"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/mcv_home_avatar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/tv_home_header_date"
-                    style="@style/TextViewHeaderLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/default_date"
-                    tools:text="@string/dummy_date_word" />
-
-                <TextView
-                    android:id="@+id/tv_home_header_title"
-                    style="@style/TextViewHeaderTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/default_home_name"
-                    tools:text="@string/dummy_name_label" />
-            </LinearLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/mcv_home_avatar"
+            <TextView
+                android:id="@+id/tv_home_header_date"
+                style="@style/TextViewHeaderLabel"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="?attr/colorOnTertiaryFixed"
-                app:strokeWidth="1dp">
+                android:layout_height="wrap_content"
+                android:text="@string/default_date"
+                tools:text="@string/dummy_date_word" />
+
+            <TextView
+                android:id="@+id/tv_home_header_title"
+                style="@style/TextViewHeaderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_home_name"
+                tools:text="@string/dummy_name_label" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv_home_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="?attr/colorOnTertiaryFixed"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/desc_user_avatar"
+                android:maxWidth="64dp"
+                android:maxHeight="64dp"
+                android:src="@drawable/dummy_home_upload" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_highlight"
+        style="@style/CardViewTransContainer"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:id="@+id/ll_highlight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/fl_img_highlight"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.7">
 
                 <ImageView
-                    android:id="@+id/iv_avatar"
+                    android:id="@+id/iv_image_highlight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/desc_highlighted_destination"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/dummy_home_highlight" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_tags_1"
+                    style="@style/CardViewTagBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="@string/desc_user_avatar"
-                    android:maxWidth="64dp"
-                    android:maxHeight="64dp"
-                    android:src="@drawable/dummy_home_avatar_real" />
+                    android:layout_margin="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/tv_tags_1"
+                        style="@style/TextViewCardTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/default_destination"
+                        tools:text="@string/dummy_destination" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/mcv_highlight"
-            style="@style/CardViewTransContainer"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="16dp">
+            </FrameLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_highlight"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_highlight_info"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
+                android:paddingStart="24dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="8dp">
 
-                <FrameLayout
-                    android:id="@+id/fl_img_highlight"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.7">
+                <LinearLayout
+                    android:id="@+id/ll_highlight_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_highlight"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/iv_image_highlight"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:contentDescription="@string/desc_highlighted_destination"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/dummy_home_highlight" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/mcv_tags_1"
-                        style="@style/CardViewTagBox"
+                    <TextView
+                        android:id="@+id/tv_highlight_label"
+                        style="@style/TextViewCardLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="24dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:text="@string/label_highlight" />
 
-                        <TextView
-                            android:id="@+id/tv_tags_1"
-                            style="@style/TextViewCardTag"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/default_destination"
-                            tools:text="@string/dummy_destination" />
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                </FrameLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_highlight_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.3"
-                    android:paddingStart="24dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="24dp"
-                    android:paddingBottom="8dp">
-
-                    <LinearLayout
-                        android:id="@+id/ll_highlight_info"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btn_highlight"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/tv_highlight_label"
-                            style="@style/TextViewCardLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_highlight" />
-
-                        <TextView
-                            android:id="@+id/tv_highlight_city"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@string/default_city_current"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            tools:text="@string/dummy_city" />
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_highlight"
+                    <TextView
+                        android:id="@+id/tv_highlight_city"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/shape_btn_rounded"
-                        android:backgroundTint="?attr/colorOnTertiary"
-                        android:elevation="0dp"
-                        android:text="@string/label_more"
-                        android:textColor="?attr/colorOnPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_marginTop="2dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/default_city_current"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="@string/dummy_city" />
+                </LinearLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/mcv_edtx_prompt"
-            style="@style/CardViewTransContainer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            app:contentPadding="24dp">
-
-            <LinearLayout
-                android:id="@+id/ll_edtx_prompt"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/mcv_label_edtx_prompt"
-                        style="@style/CardViewTagBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/tv_label_edtx_prompt"
-                            style="@style/TextViewCardTag"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_trip_prompt" />
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <ImageButton
-                        android:id="@+id/btn_prompt_help"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.7"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="@string/desc_prompt_help"
-                        android:src="@drawable/ic_outline_help_outline_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="TouchTargetSizeCheck" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                <EditText
-                    android:id="@+id/edtx_prompt"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="bottom|start"
-                    android:hint="@string/hint_prompt_input"
-                    android:importantForAutofill="no"
-                    android:inputType="textLongMessage|textMultiLine"
-                    android:minLines="3"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_highlight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_btn_rounded"
+                    android:backgroundTint="?attr/colorOnTertiary"
+                    android:elevation="0dp"
+                    android:text="@string/label_more"
                     android:textColor="?attr/colorOnPrimary"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mcv_label_edtx_prompt" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/btn_prompt_send"
-                    style="@style/ImageButtonRoundNoText"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_home_tpref"
+        style="@style/CardViewTransContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:contentPaddingBottom="12dp"
+        app:contentPaddingLeft="24dp"
+        app:contentPaddingRight="24dp"
+        app:contentPaddingTop="12dp">
+
+        <LinearLayout
+            android:id="@+id/ll_home_tpref"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mcv_home_tpref_label"
+                    style="@style/CardViewTagBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="16dp"
-                    android:contentDescription="@string/desc_send"
-                    android:src="@drawable/ic_round_send_24" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_home_tpref_label"
+                        style="@style/TextViewCardTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/desc_set_travel_preference" />
 
-        </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
 
-    </LinearLayout>
+                <ImageButton
+                    android:id="@+id/btn_home_tpref"
+                    style="@style/ImageButtonRoundNoText"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="@string/desc_set_travel_preference"
+                    android:src="@drawable/ic_round_fact_check_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_home_generate"
+        style="@style/CardViewTransContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:id="@+id/fl_home_generated"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_home_generated"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:alpha="0.15"
+                android:contentDescription="@string/desc_background_yogyakarta"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dummy_home_highlight" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_home_generate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="24dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_home_generate"
+                    style="@style/ButtonMaterialRegularTransparent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-8dp"
+                    android:text="@string/label_generate_travel_plan"
+                    app:icon="@drawable/ic_round_generating_tokens_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

@@ -1,9 +1,7 @@
 package com.rickyslash.travis.ui.main.pages.home
 
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +14,6 @@ import com.rickyslash.travis.databinding.FragmentHomeBinding
 import com.rickyslash.travis.helper.ViewModelFactory
 import com.rickyslash.travis.helper.getDateToday
 import com.rickyslash.travis.helper.getFirstWord
-import com.rickyslash.travis.helper.getRandomMaterialColor
 import com.rickyslash.travis.ui.highlight.HighlightActivity
 import com.rickyslash.travis.ui.login.LoginActivity
 import com.rickyslash.travis.ui.settings.preference.TravelPreferenceActivity
@@ -57,20 +54,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAction() {
-        binding.btnPromptHelp.setOnClickListener { startActivity(Intent(requireContext(), TravelPreferenceActivity::class.java)) }
+        binding.btnHomeTpref.setOnClickListener { startActivity(Intent(requireContext(), TravelPreferenceActivity::class.java)) }
         binding.mcvHighlight.setOnClickListener { startActivity(Intent(requireContext(), HighlightActivity::class.java)) }
-        binding.btnPromptSend.setOnClickListener { startActivity(Intent(requireActivity(), TravelPlanActivity::class.java)) }
+        binding.btnHomeGenerate.setOnClickListener { startActivity(Intent(requireActivity(), TravelPlanActivity::class.java)) }
         binding.ivAvatar.setOnClickListener { startActivity(Intent(requireContext(), LoginActivity::class.java)) }
-    }
-
-    private fun dialogPromptHelp() {
-        AlertDialog.Builder(requireActivity()).apply {
-            setTitle(getString(R.string.label_help_prompt_title))
-            setView(R.layout.textview_dialog_message)
-            setPositiveButton(getString(R.string.label_ok), null)
-            create()
-            show()
-        }
+        binding.btnHighlight.setOnClickListener { startActivity(Intent(requireContext(), HighlightActivity::class.java)) }
     }
 
 }
