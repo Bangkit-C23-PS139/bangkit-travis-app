@@ -48,13 +48,17 @@ class TravelPlanAdapter(private val travelPlanList: List<DestinationRecommendati
         holder.binding.btnItemTplanEdit.setOnClickListener { dialogPromptEdit(holder.itemView.context, data, (holder.binding)) }
 
         holder.binding.btnItemTplanNavigate.setOnClickListener {
-            val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.mapUrl))
-            holder.itemView.context.startActivity(navIntent)
+            if (data.mapUrl.isNotEmpty()) {
+                val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.mapUrl))
+                holder.itemView.context.startActivity(navIntent)
+            }
         }
 
         holder.itemView.setOnClickListener {
-            val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.mapUrl))
-            holder.itemView.context.startActivity(navIntent)
+            if (data.mapUrl.isNotEmpty()) {
+                val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.mapUrl))
+                holder.itemView.context.startActivity(navIntent)
+            }
         }
     }
 
@@ -85,6 +89,7 @@ class TravelPlanAdapter(private val travelPlanList: List<DestinationRecommendati
                         binding.tvItemTplanLabel.text = context.getString(R.string.label_user_input)
                         data.keywordCategory = "['User Input']"
                         data.imgUrl = "https://source.unsplash.com/512x512/?${dialogTitle.text.toString()}"
+                        data.mapUrl = ""
                     }
                 }
             }

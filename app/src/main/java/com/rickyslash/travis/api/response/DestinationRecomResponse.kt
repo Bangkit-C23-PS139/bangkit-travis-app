@@ -62,7 +62,7 @@ data class DestinationRecommendationItem(
 	val latitude: Any,
 
 	@field:SerializedName("map_url")
-	val mapUrl: String,
+	var mapUrl: String,
 
 	@field:SerializedName("rating")
 	val rating: Any,
