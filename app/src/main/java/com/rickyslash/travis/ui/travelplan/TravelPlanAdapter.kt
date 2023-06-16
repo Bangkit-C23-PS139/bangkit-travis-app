@@ -59,7 +59,6 @@ class TravelPlanAdapter(private val travelPlanList: List<TravelPlanItem>): Recyc
 
     private fun dialogPromptEdit(context: Context, data: TravelPlanItem, binding: ItemTravelPlanBinding) {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.view_dialog_tplan_item_edit, null)
-        val dialogTime = dialogView.findViewById<TextInputEditText>(R.id.edtx_dialog_tplan_time)
         val dialogTitle = dialogView.findViewById<TextInputEditText>(R.id.edtx_dialog_tplan_title)
         val dialogDesc = dialogView.findViewById<TextInputEditText>(R.id.edtx_dialog_tplan_desc)
         AlertDialog.Builder(context).apply {
@@ -71,10 +70,6 @@ class TravelPlanAdapter(private val travelPlanList: List<TravelPlanItem>): Recyc
                         Toast.makeText(context, R.string.label_tplan_empty_destination, Toast.LENGTH_SHORT).show()
                     }
                     else -> {
-                        if (!dialogTime.text.isNullOrBlank()) {
-                            binding.tvItemTplanTime.text = dialogTime.text.toString()
-                            data.createdAt = dialogTime.text.toString()
-                        }
                         if (!dialogDesc.text.isNullOrBlank()) {
                             binding.tvItemTplanDesc.text = dialogDesc.text.toString()
                             data.description = dialogDesc.text.toString()
@@ -93,5 +88,4 @@ class TravelPlanAdapter(private val travelPlanList: List<TravelPlanItem>): Recyc
             show()
         }
     }
-
 }

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tv_help_dialog_msg"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingHorizontal="24dp"
-    android:paddingTop="8dp"
-    android:text="@string/label_help_prompt_message"
-    android:textSize="12sp" />
