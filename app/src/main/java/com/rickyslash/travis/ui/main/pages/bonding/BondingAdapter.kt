@@ -47,7 +47,7 @@ class BondingAdapter: PagingDataAdapter<BondingDataItem, BondingAdapter.ViewHold
     inner class ViewHolder(var binding: ItemBondingBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(data: BondingDataItem) {
             binding.tvItemBondingTitle.text = data.activityName
-            binding.tvItemBondingDate.text = getStartDateFromISODate(data.createdAt)
+            binding.tvItemBondingDate.text = getStartDateFromISODate(data.startTime)
             binding.ivThumb1.setImageDrawable(ColorDrawable(getRandomMaterialColor()))
             binding.ivThumb2.setImageDrawable(ColorDrawable(getRandomMaterialColor()))
             binding.ivThumb3.setImageDrawable(ColorDrawable(getRandomMaterialColor()))
@@ -55,6 +55,8 @@ class BondingAdapter: PagingDataAdapter<BondingDataItem, BondingAdapter.ViewHold
                 .load(data.backgroundImg)
                 .placeholder(ColorDrawable(getRandomMaterialColor()))
                 .into(binding.ivItemBondingImg)
+
+            binding.btnItemBondingJoin.setOnClickListener { onButtonJoinClickCallback.onButtonJoinClicked(data.id) }
 
             binding.btnItemBondingMore.setOnClickListener {
                 val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.gmapLink))

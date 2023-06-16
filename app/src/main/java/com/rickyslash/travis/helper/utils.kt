@@ -60,7 +60,7 @@ fun isValidEmail(email: String): Boolean {
 
 fun getStartDateFromISODate(dateString: String): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-    val outputFormat = SimpleDateFormat("dd MMM yy", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("HH:mm • dd MMM yy", Locale.getDefault())
     inputFormat.timeZone = TimeZone.getTimeZone("UTC")
     return try {
         val date = inputFormat.parse(dateString)

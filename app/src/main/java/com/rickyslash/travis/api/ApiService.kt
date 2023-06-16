@@ -34,11 +34,6 @@ interface ApiService {
     @GET("/users/self")
     fun getSelfUser(): Call<SelfDataResponse>
 
-    @POST("/activity/{activity_id}/link")
-    fun linkToBonding(
-        @Path("activity_id") bondingId: String
-    ): Call<LinkToBondingResponse>
-
     @GET("/destination")
     suspend fun getHighlight(
         @Query("page") page: Int = 0,
@@ -59,5 +54,15 @@ interface ApiService {
         @Query("pagesize") size: Int = 5,
         @Query("city") city: String
     ): BondingResponse
+
+    @POST("/activity/{activity_id}/link")
+    fun linkToBonding(
+        @Path("activity_id") bondingId: String
+    ): Call<LinkToBondingResponse>
+
+    @POST("/activity/{activity_id}/unlink")
+    fun unlinkBonding(
+        @Path("activity_id") bondingId: String
+    ): Call<LinkToBondingResponse>
 
 }

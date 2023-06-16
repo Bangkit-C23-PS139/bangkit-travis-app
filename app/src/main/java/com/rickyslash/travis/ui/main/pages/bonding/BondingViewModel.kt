@@ -1,5 +1,6 @@
 package com.rickyslash.travis.ui.main.pages.bonding
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,9 +21,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class BondingViewModel(private val currentPreferences: CurrentStatePreferences, travelRepository: TravelRepository) : ViewModel() {
-
-    private val _listBondingData = MutableLiveData<List<BondingListDataItem>>()
-    val listBondingData: LiveData<List<BondingListDataItem>> = _listBondingData
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -65,6 +63,29 @@ class BondingViewModel(private val currentPreferences: CurrentStatePreferences, 
             override fun onFailure(call: Call<LinkToBondingResponse>, t: Throwable) {
                 _joinResponseMessage.value = t.message
                 _joinResponseMessage.value = null
+            }
+        })
+    }
+
+    fun unlinkBonding(bondingId: String) {
+        val client = ApiConfig.getApiService(currentPreferences).unlinkBonding(bondingId)
+        client.enqueue(object : Callback<LinkToBondingResponse> {
+            override fun onResponse(
+                call: Call<LinkToBondingResponse>,
+                response: Response<LinkToBondingResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        Log.d("UnlinkBonding", "Successful ${responseBody.message}")
+                    }
+                } else {
+                    Log.d("UnlinkBonding", "NOT Successful ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<LinkToBondingResponse>, t: Throwable) {
+                Log.d("UnlinkBonding", "Failure ${t.message}")
             }
         })
     }

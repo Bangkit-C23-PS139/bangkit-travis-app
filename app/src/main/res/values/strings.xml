@@ -52,6 +52,10 @@
     <string name="label_request_bonding">Request Bonding Event!</string>
     <string name="label_post_service">Post Your Service!</string>
     <string name="label_promote_highlight">Promote Your Place!</string>
+    <string name="label_generate_travel_plan">Generate Travel Plan</string>
+    <string name="label_bonding_join_success">Joined! Lets have fun! 🎉</string>
+    <string name="label_bonding_unlink_success">Unlinked! :)</string>
+    <string name="label_joined">Joined</string>
 
     <string name="arg_home_name">Hi, %s!</string>
     <string name="arg_number_overflow">%d+</string>
@@ -70,6 +74,8 @@
     <string name="desc_app_logo">Travis Mascot</string>
     <string name="desc_signup_upload_photo">Upload profile photo</string>
     <string name="desc_gender_choose">Choose gender</string>
+    <string name="desc_set_travel_preference">Set Travel Preference</string>
+    <string name="desc_background_yogyakarta">Background Image of Yogyakarta</string>
 
     <string name="default_date">Date</string>
     <string name="default_destination">Destination</string>
@@ -112,6 +118,8 @@
     <string name="err_location_self_fail">There\'s a trouble getting your location :(</string>
     <string name="err_location_permission_missing">We need permission to run the app :(</string>
     <string name="err_preferences_empty">Please choose at least 1 Travel Preferences :)</string>
+    <string name="err_bonding_already_join">User already exists in this activity</string>
+    <string name="err_bad_request">Bad Request</string>
 
     <string name="info_city_unavailable">Your city is still unavailable. We\'re showing Yogyakarta instead 🙂\n(currently only Yogyakarta &amp; Jakarta Pusat is available)</string>
 

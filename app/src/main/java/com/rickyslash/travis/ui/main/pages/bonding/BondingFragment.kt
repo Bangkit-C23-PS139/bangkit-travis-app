@@ -3,6 +3,7 @@ package com.rickyslash.travis.ui.main.pages.bonding
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.rickyslash.travis.api.response.BondingListDataItem
 import com.rickyslash.travis.data.LoadingStateAdapter
 import com.rickyslash.travis.databinding.FragmentBondingBinding
 import com.rickyslash.travis.helper.ViewModelFactory
+import com.rickyslash.travis.helper.getFirstWord
 import com.rickyslash.travis.ui.login.LoginActivity
 import com.rickyslash.travis.ui.main.pages.bonding.bondingdetail.BondingDetailActivity
 
@@ -112,14 +114,22 @@ class BondingFragment : Fragment() {
 
     private fun joinBonding(bondingId: String) {
         if (bondingViewModel.getPreferences().isLogin) {
+            bondingViewModel.joinBonding(bondingId)
             joinResponseMessageObserver = Observer { joinResponseMessage ->
-                bondingViewModel.joinBonding(bondingId)
                 if (joinResponseMessage != null) {
-                    Toast.makeText(requireContext(), bondingViewModel.joinResponseMessage.value, Toast.LENGTH_SHORT).show()
+                    if (getFirstWord(joinResponseMessage) == "Successfully") {
+                        Toast.makeText(requireActivity(), getString(R.string.label_bonding_join_success), Toast.LENGTH_SHORT).show()
+                    } else if (joinResponseMessage == getString(R.string.err_bad_request)) {
+                        bondingViewModel.unlinkBonding(bondingId)
+                        Toast.makeText(requireActivity(), getString(R.string.label_bonding_unlink_success), Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireActivity(), joinResponseMessage, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
+            joinResponseMessageObserver?.let { bondingViewModel.joinResponseMessage.observe(requireActivity(), it) }
         } else {
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            startActivity(Intent(requireActivity(), LoginActivity::class.java))
         }
     }
 
