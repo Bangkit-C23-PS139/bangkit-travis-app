@@ -42,7 +42,7 @@ class TravelPreferenceAdapter(
         holder.radioButton.isChecked = isSelected
         holder.radioButton.text = convertSnakeCaseToSentence(data)
         Glide.with(holder.itemView.context)
-            .load("https://source.unsplash.com/512x512/?${convertSnakeCaseToSentence(data)}")
+            .load("https://source.unsplash.com/512x512/?${convertSnakeCaseToSentence(data)} travel")
             .placeholder(ColorDrawable(getRandomMaterialColor()))
             .into(holder.binding.ivItemTpref)
 
