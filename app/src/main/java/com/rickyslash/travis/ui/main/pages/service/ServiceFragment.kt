@@ -17,7 +17,9 @@ import com.rickyslash.travis.data.LoadingStateAdapter
 import com.rickyslash.travis.databinding.FragmentServiceBinding
 import com.rickyslash.travis.helper.ViewModelFactory
 import com.rickyslash.travis.helper.getFirstWord
+import com.rickyslash.travis.ui.login.LoginActivity
 import com.rickyslash.travis.ui.main.pages.service.servicedetail.ServiceDetailActivity
+import com.rickyslash.travis.ui.profile.ProfileActivity
 
 class ServiceFragment : Fragment() {
 
@@ -58,6 +60,13 @@ class ServiceFragment : Fragment() {
 
     private fun setupAction() {
         setServiceData()
+        binding.ivAvatar.setOnClickListener {
+            if (serviceViewModel.getPreferences().isLogin) {
+                startActivity(Intent(requireContext(), ProfileActivity::class.java))
+            } else {
+                startActivity(Intent(requireContext(), LoginActivity::class.java))
+            }
+        }
     }
 
     private fun showServiceDetails(data: ServiceItem) {

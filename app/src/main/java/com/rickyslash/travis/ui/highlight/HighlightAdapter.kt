@@ -33,7 +33,11 @@ class HighlightAdapter: PagingDataAdapter<HighlightDataItem, HighlightAdapter.Vi
         val data = getItem(position)
         if (data != null) {
             holder.bind(data)
-            holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(data) }
+            holder.itemView.setOnClickListener {
+                // onItemClickCallback.onItemClicked(data)
+                val navIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.gmapLink))
+                holder.itemView.context.startActivity(navIntent)
+            }
         }
     }
 

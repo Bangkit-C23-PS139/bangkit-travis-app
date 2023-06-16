@@ -11,6 +11,7 @@ import com.rickyslash.travis.ui.main.pages.bonding.BondingViewModel
 import com.rickyslash.travis.ui.main.pages.home.HomeViewModel
 import com.rickyslash.travis.ui.main.pages.menubox.MenuBoxViewModel
 import com.rickyslash.travis.ui.main.pages.service.ServiceViewModel
+import com.rickyslash.travis.ui.profile.ProfileViewModel
 import com.rickyslash.travis.ui.settings.preference.TravelPreferenceViewModel
 
 class ViewModelFactory(private val application: Application): ViewModelProvider.NewInstanceFactory() {
@@ -31,6 +32,9 @@ class ViewModelFactory(private val application: Application): ViewModelProvider.
             }
             modelClass.isAssignableFrom(MenuBoxViewModel::class.java) -> {
                 MenuBoxViewModel(Injection.providePreferences(application)) as T
+            }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(Injection.providePreferences(application)) as T
             }
             modelClass.isAssignableFrom(HighlightViewModel::class.java) -> {
                 HighlightViewModel(Injection.providePreferences(application), Injection.provideRepository(application)) as T

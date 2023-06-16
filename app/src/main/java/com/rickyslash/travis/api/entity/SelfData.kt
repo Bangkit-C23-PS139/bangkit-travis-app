@@ -26,7 +26,7 @@ data class SelfData(
     val travelPreferences: List<String>,
 
     @field:SerializedName("activities")
-    val activities: List<Any>,
+    val activities: List<BondingData>,
 
     @field:SerializedName("id")
     val id: String,

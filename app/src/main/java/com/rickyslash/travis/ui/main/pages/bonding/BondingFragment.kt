@@ -21,6 +21,7 @@ import com.rickyslash.travis.helper.ViewModelFactory
 import com.rickyslash.travis.helper.getFirstWord
 import com.rickyslash.travis.ui.login.LoginActivity
 import com.rickyslash.travis.ui.main.pages.bonding.bondingdetail.BondingDetailActivity
+import com.rickyslash.travis.ui.profile.ProfileActivity
 
 class BondingFragment : Fragment() {
 
@@ -71,6 +72,13 @@ class BondingFragment : Fragment() {
 
     private fun setupAction() {
         setBondingData()
+        binding.ivAvatar.setOnClickListener {
+            if (bondingViewModel.getPreferences().isLogin) {
+                startActivity(Intent(requireContext(), ProfileActivity::class.java))
+            } else {
+                startActivity(Intent(requireContext(), LoginActivity::class.java))
+            }
+        }
     }
 
     private fun setupRV() {
